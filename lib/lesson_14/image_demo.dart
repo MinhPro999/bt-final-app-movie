@@ -19,6 +19,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
+        backgroundColor: Colors.black,
         body: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -35,12 +36,16 @@ class MyApp extends StatelessWidget {
               // nó sẽ lấy size gốc của hình để hiển thị
               Image.asset(
                 'assets/images/dog.png',
+                width: 100,
+                height: 200,
+                fit: BoxFit.contain,
               ),
 
               //? Image.network
               // Phương thức này dùng để tải hình ảnh từ một URL (từ internet).
               Image.network(
-                  'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQTAcRvCrR6UjBc9HwnLXbCNaFbvg5cJ3M3Mzun7hhxS3cXORPHZ3HMBVutjO_lXA_xsg&usqp=CAU'),
+                  'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR831sJpkU6vaUIk3PiKO_stH8sQrPefiqpvQ&s'),
+              // 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQTAcRvCrR6UjBc9HwnLXbCNaFbvg5cJ3M3Mzun7hhxS3cXORPHZ3HMBVutjO_lXA_xsg&usqp=CAU'),
 
               //! khi lập trình thì sẽ làm việc với 2 loại ảnh là: image và vector. Vector thường được dùng nhất là SVG.
               //! Flutter không có một thư viện built in về vector nên sẽ dùng bên thứ 3.
@@ -49,6 +54,17 @@ class MyApp extends StatelessWidget {
                 "assets/svg/technical.svg",
                 width: 100,
                 height: 100,
+              ),
+              Image.asset(
+                'assets/images/WiFi Signal/Dark.png',
+                width: 100,
+                height: 200,
+                fit: BoxFit.contain,
+              ),
+              SvgPicture.asset(
+                "assets/svg/WiFi Signal/Dark.svg",
+                width: 100,
+                height: 200,
               )
             ],
           ),

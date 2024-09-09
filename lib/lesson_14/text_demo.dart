@@ -34,7 +34,7 @@ class MyApp extends StatelessWidget {
                 fontStyle: FontStyle.italic,
                 decoration: TextDecoration.underline,
                 letterSpacing: 2,
-                wordSpacing: 4,
+                wordSpacing: 10,
               ),
               //? textAlign
               // textAlign xác định cách văn bản được căn chỉnh theo chiều ngang
@@ -46,13 +46,13 @@ class MyApp extends StatelessWidget {
               //? maxLines
               // Giới hạn số dòng hiển thị cho văn bản. Nếu văn bản dài hơn số dòng đã định,
               // phần còn lại sẽ bị cắt hoặc hiển thị dấu ba chấm tùy thuộc vào thuộc tính overflow.
-              maxLines: 1,
+              // maxLines: 2,
               //? overflow
               // overflow điều khiển cách xử lý văn bản khi nó vượt quá không gian hiển thị
               //  - TextOverflow.clip: Cắt văn bản
               //  - TextOverflow.ellipsis: Thêm dấu ba chấm "..." khi văn bản quá dài
               //  - TextOverflow.fade: Làm mờ dần văn bản
-              overflow: TextOverflow.ellipsis,
+              // overflow: TextOverflow.ellipsis,
               //? softWrap
               // Xác định có nên ngắt dòng văn bản khi hết không gian hay không.
               // Nếu softWrap là false, văn bản sẽ tiếp tục nằm trên cùng một dòng
@@ -64,7 +64,7 @@ class MyApp extends StatelessWidget {
               //  - TextDirection.rtl: Văn bản từ phải sang trái (thường dùng cho các ngôn ngữ như tiếng Ả Rập).
               textDirection: TextDirection.ltr,
               //? textScaleFactor: cho phép bạn điều chỉnh tỷ lệ kích thước của văn bản
-              textScaleFactor: 1.5, // Tăng kích thước văn bản lên 1.5 lần
+              // textScaleFactor: 3, // Tăng kích thước văn bản lên 1.5 lần
             ),
           ),
         ),

@@ -30,11 +30,12 @@ class MyApp extends StatelessWidget {
                 //? color
                 // Xác định màu sắc của biểu tượng.
                 // Bạn có thể sử dụng bất kỳ màu nào từ lớp Colors hoặc tạo màu tùy chỉnh với Color.
-                color: Color(0xff0b03fc),
-                // color: Colors.amber,
+                // color: Color,
+                // color: Color(0xfff542a4),
+                color: Colors.black,
                 //? size
                 // Kích thước của biểu tượng, được đo bằng pixel. Mặc định kích thước là 24.0.
-                size: 40.0,
+                size: 100.0,
                 //? textDirection
                 // điều chỉnh hướng của biểu tượng.
                 // Hữu ích khi làm việc với các ngôn ngữ có hướng từ phải sang trái (RTL) như tiếng Ả Rập hoặc tiếng Do Thái.
@@ -46,12 +47,16 @@ class MyApp extends StatelessWidget {
               const Icon(
                 CupertinoIcons.home,
                 color: Colors.red,
+                size: 100.0,
               ),
               //! Kết hợp Icon với các widget khác
               // Icon thường được sử dụng kết hợp với IconButton,
               // là một widget cho phép bạn tạo nút nhấn với biểu tượng thay vì văn bản
               IconButton(
-                icon: const Icon(Icons.volume_up),
+                icon: const Icon(
+                  Icons.volume_up,
+                  size: 100.0,
+                ),
                 color: Colors.green,
                 onPressed: () {
                   print('Volume up pressed');
@@ -64,6 +69,7 @@ class MyApp extends StatelessWidget {
         // Icon thường được sử dụng trong thanh công cụ trên cùng (AppBar), ví dụ như các biểu tượng hành động:
         appBar: AppBar(
           title: const Text('My App'),
+          backgroundColor: Colors.blueAccent,
           actions: <Widget>[
             IconButton(
               icon: const Icon(Icons.settings),
