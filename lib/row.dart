@@ -152,11 +152,9 @@ class MyApp extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: <Widget>[
-                  Flexible(
-                    child: Container(
-                      color: Colors.red,
-                      child: const Text('1'),
-                    ),
+                  Container(
+                    color: Colors.red,
+                    child: const Text('1'),
                   ),
                   Container(
                     width: 50,

@@ -36,7 +36,7 @@ class MyApp extends StatelessWidget {
         ),
         body: Center(
           child: Stack(
-            alignment: Alignment.topLeft, // Căn giữa các con trong Stack
+            alignment: Alignment.centerLeft, // Căn giữa các con trong Stack
             children: <Widget>[
               Container(
                 width: 200,

@@ -44,8 +44,12 @@ class MyApp extends StatelessWidget {
         appBar: AppBar(
           title: const Text('Flutter Wrap Example'),
         ),
-        body: Center(
+        body: SizedBox(
+          width: double.infinity,
+          height: double.infinity,
           child: Wrap(
+            alignment: WrapAlignment.end,
+            // crossAxisAlignment: WrapCrossAlignment.end,
             spacing: 10.0, // Khoảng cách giữa các con theo chiều ngang
             runSpacing: 20.0, // Khoảng cách giữa các dòng
             children: <Widget>[
@@ -66,6 +70,42 @@ class MyApp extends StatelessWidget {
                 height: 100,
                 color: Colors.blue,
                 child: const Center(child: Text('Item 3')),
+              ),
+              Container(
+                width: 100,
+                height: 100,
+                color: Colors.orange,
+                child: const Center(child: Text('Item 4')),
+              ),
+              Container(
+                width: 100,
+                height: 100,
+                color: Colors.purple,
+                child: const Center(child: Text('Item 5')),
+              ),
+              Container(
+                width: 100,
+                height: 100,
+                color: Colors.orange,
+                child: const Center(child: Text('Item 4')),
+              ),
+              Container(
+                width: 100,
+                height: 100,
+                color: Colors.purple,
+                child: const Center(child: Text('Item 5')),
+              ),
+              Container(
+                width: 100,
+                height: 100,
+                color: Colors.orange,
+                child: const Center(child: Text('Item 4')),
+              ),
+              Container(
+                width: 100,
+                height: 100,
+                color: Colors.purple,
+                child: const Center(child: Text('Item 5')),
               ),
               Container(
                 width: 100,

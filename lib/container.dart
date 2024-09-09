@@ -1,12 +1,10 @@
-import 'package:flutter/material.dart';
-
 // void main() {
 //   runApp(const MyApp());
 // }
 
-//! Container: là Widget được sử dụng rất nhiều trong Flutter.
-//? Container dùng như 1 view để chứa phần tử con bên trong.
-//? Có thể chỉ được chiều cao, chiều rộng, màu sắc, bo góc, căn chỉnh
+// //! Container: là Widget được sử dụng rất nhiều trong Flutter.
+// //? Container dùng như 1 view để chứa phần tử con bên trong.
+// //? Có thể chỉnh được chiều cao, chiều rộng, màu sắc, bo góc, căn chỉnh
 
 // class DemoContainer extends StatelessWidget {
 //   const DemoContainer({super.key});
@@ -14,21 +12,20 @@ import 'package:flutter/material.dart';
 //   @override
 //   Widget build(BuildContext context) {
 //     return Scaffold(
-//       body: SafeArea(
-//           child: Container(
-//         color: Colors.red,
+//       body: Container(
+//         color: Colors.blue,
 //         child: Container(
-//           margin: const EdgeInsets.all(32),
-//           padding: const EdgeInsets.all(16),
-//           color: Colors.yellow,
+//           margin: const EdgeInsets.all(20),
+//           padding: const EdgeInsets.all(80),
+//           color: Colors.red,
 //           child: Container(
 //             decoration: BoxDecoration(
-//               borderRadius: BorderRadius.circular(16),
+//               borderRadius: BorderRadius.circular(40),
 //               color: Colors.black,
 //             ),
 //           ),
 //         ),
-//       )),
+//       ),
 //     );
 //   }
 // }
@@ -39,13 +36,8 @@ import 'package:flutter/material.dart';
 //   // This widget is the root of your application.
 //   @override
 //   Widget build(BuildContext context) {
-//     return MaterialApp(
-//       title: 'Flutter Demo',
-//       theme: ThemeData(
-//         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-//         useMaterial3: true,
-//       ),
-//       home: const DemoContainer(),
+//     return const MaterialApp(
+//       home: DemoContainer(),
 //     );
 //   }
 // }
@@ -57,6 +49,8 @@ import 'package:flutter/material.dart';
 // nó sẽ có kích thước đó
 // trừ khi thành phần cha đã đặt kích thước cho nó.
 // Trong trường hợp đó, Container sẽ tuân theo kích thước của cha và không giữ được kích thước ban đầu.
+
+// import 'package:flutter/material.dart';
 
 // void main() => runApp(const MyApp());
 
@@ -93,6 +87,8 @@ import 'package:flutter/material.dart';
 // }
 
 //? 2. Container không size, không con → lấy kích thước lớn nhất có thể
+// import 'package:flutter/material.dart';
+
 // void main() => runApp(const MyApp());
 
 // class MyApp extends StatelessWidget {
@@ -117,6 +113,8 @@ import 'package:flutter/material.dart';
 
 //? 3. Container không size, có con không size → Container thu nhỏ theo con
 
+// import 'package:flutter/material.dart';
+
 // void main() => runApp(const MyApp());
 
 // class MyApp extends StatelessWidget {
@@ -140,7 +138,9 @@ import 'package:flutter/material.dart';
 //   }
 // }
 
-//? 4. Container không size, có con có size → Container thu nhỏ theo con
+//? 4. Container không size, có con có size → Container cha thu nhỏ theo con
+// import 'package:flutter/material.dart';
+
 // void main() => runApp(const MyApp());
 
 // class MyApp extends StatelessWidget {
@@ -156,6 +156,7 @@ import 'package:flutter/material.dart';
 //         body: Center(
 //           child: Container(
 //             color: Colors.yellow,
+//             padding: const EdgeInsets.all(10),
 //             child: Container(
 //               width: 150, // Con có size cố định
 //               height: 100,
@@ -177,6 +178,8 @@ import 'package:flutter/material.dart';
 //? 5. Container không size, cha có size → size con follow theo cha
 // Container bên ngoài có kích thước cố định 300x300.
 // Bất kể con bên trong có kích thước hay không, nó sẽ bị kéo theo và hiển thị trong kích thước của cha.
+// import 'package:flutter/material.dart';
+
 // void main() => runApp(const MyApp());
 
 // class MyApp extends StatelessWidget {
@@ -196,6 +199,7 @@ import 'package:flutter/material.dart';
 //             color: Colors.orange,
 //             child: Container(
 //               color: Colors.purple,
+//               alignment: Alignment.center,
 //               child: const Text(
 //                 'Con được kéo theo',
 //                 style: TextStyle(color: Colors.white),
@@ -212,6 +216,8 @@ import 'package:flutter/material.dart';
 // Cả cha và con đều có kích thước cố định.
 // Cha có kích thước 400x400 và con có kích thước 200x200,
 // vì vậy size con luôn theo cha.
+
+import 'package:flutter/material.dart';
 
 void main() => runApp(const MyApp());
 

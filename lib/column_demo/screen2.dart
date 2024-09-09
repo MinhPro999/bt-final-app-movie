@@ -9,10 +9,12 @@ class Screen2 extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Column Example 2'),
       ),
-      body: Center(
+      body: SizedBox(
+        height: double.infinity,
+        width: double.infinity,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
             Container(
               width: 100,

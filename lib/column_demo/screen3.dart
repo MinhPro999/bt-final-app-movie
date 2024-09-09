@@ -12,7 +12,7 @@ class Screen3 extends StatelessWidget {
       body: Center(
         child: Column(
           verticalDirection: VerticalDirection.up,
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          mainAxisAlignment: MainAxisAlignment.start,
           children: <Widget>[
             Container(
               width: 100,

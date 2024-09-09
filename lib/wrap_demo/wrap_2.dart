@@ -21,7 +21,7 @@ class MyApp extends StatelessWidget {
             direction: Axis.vertical, // Sắp xếp theo trục dọc
             spacing: 10.0, // Khoảng cách giữa các con theo chiều dọc
             runSpacing: 20.0, // Khoảng cách giữa các cột khi wrap sang cột mới
-            runAlignment: WrapAlignment.center, // Căn giữa các cột
+            runAlignment: WrapAlignment.end, // Căn giữa các cột
             children: <Widget>[
               Container(
                 width: 200,
