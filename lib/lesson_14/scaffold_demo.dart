@@ -110,12 +110,16 @@ class MyHomePage extends StatelessWidget {
           // Widget leading thường là một biểu tượng menu (hamburger menu)
           // hoặc mũi tên trở lại, tùy thuộc vào ngữ cảnh của ứng dụng.
           // Nếu không được chỉ định, Flutter sẽ tự động thêm một nút để mở Drawer nếu Scaffold có một Drawer.
-          leading: Builder(builder: (context) {
-            return IconButton(
-              icon: const Icon(Icons.menu),
-              onPressed: () => Scaffold.of(context).openDrawer(),
-            );
-          }),
+          // leading: Builder(builder: (context) {
+          //   return IconButton(
+          //     icon: const Icon(Icons.menu),
+          //     onPressed: () => Scaffold.of(context).openDrawer(),
+          //   );
+          // }),
+          leading: const Icon(Icons.menu),
+          // automaticallyImplyLeading: false,
+          // // titleSpacing: 1,
+          // leadingWidth: 10,
           //! backgroundColor: Đặt màu nền cho AppBar.
           backgroundColor: Colors.amber,
           //! bottom
