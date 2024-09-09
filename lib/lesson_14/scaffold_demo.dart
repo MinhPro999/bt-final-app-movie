@@ -9,6 +9,9 @@
 //  - body: nội dung chính.
 
 import 'package:flutter/material.dart';
+import 'package:flutter_learning/lesson_14/body_section_of_scaffold.dart';
+import 'package:flutter_learning/lesson_14/bottom_nav_bar_of_scaffold.dart';
+import 'package:flutter_learning/lesson_14/drawer_section_of_scaffold.dart';
 
 void main(List<String> args) {
   runApp(const MyApp());
@@ -132,30 +135,11 @@ class MyHomePage extends StatelessWidget {
         //! body
         // Phần body của Scaffold là nơi chính để hiển thị nội dung của ứng dụng.
         // Đây là nơi bạn có thể đặt các Widgets như Column, Row, Stack, v.v.
-        body: Column(
-          children: [
-            Expanded(
-                child: Container(
-              decoration:
-                  BoxDecoration(border: Border.all(color: Colors.black)),
-              child: PageView(
-                physics: const NeverScrollableScrollPhysics(),
-                controller: pageview1Controller,
-                children: pageViewOneChildren,
-              ),
-            )),
-            Expanded(
-                child: Container(
-              decoration:
-                  BoxDecoration(border: Border.all(color: Colors.black)),
-              child: PageView(
-                physics: const NeverScrollableScrollPhysics(),
-                controller: pageview2Controller,
-                children: pageViewTwoChildren,
-              ),
-            )),
-          ],
-        ),
+        body: BodySection(
+            pageview1Controller: pageview1Controller,
+            pageViewOneChildren: pageViewOneChildren,
+            pageview2Controller: pageview2Controller,
+            pageViewTwoChildren: pageViewTwoChildren),
         //! floatingActionButton
         // là một nút hành động nổi, thường dùng để thực hiện một hành động.
         floatingActionButton: FloatingActionButton(
@@ -166,41 +150,15 @@ class MyHomePage extends StatelessWidget {
         // drawer là một ngăn kéo điều hướng bên,
         // thường được mở từ một biểu tượng ở góc trên bên trái của AppBar.
         // Nó thường chứa danh sách các lựa chọn điều hướng.
-        drawer: Drawer(
-          child: ListView(
-            children: <Widget>[
-              ListTile(
-                title: const Text('Item 1'),
-                onTap: () {},
-              ),
-              ListTile(
-                title: const Text('Item 2'),
-                onTap: () {},
-              ),
-            ],
-          ),
-        ),
+        drawer: const DrawerSection(),
         //! bottomNavigationBar
         // bottomNavigationBar là một thanh điều hướng ở phía dưới của màn hình,
         // cho phép người dùng chuyển đổi giữa các view hoặc chức năng chính của ứng dụng.
-        bottomNavigationBar: BottomNavigationBar(
-          onTap: (index) {
-            pageview2Controller.jumpToPage(index);
-          },
-          items: const <BottomNavigationBarItem>[
-            BottomNavigationBarItem(
-              icon: Icon(Icons.home),
-              label: 'Home',
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.business),
-              label: 'Business',
-            ),
-          ],
-        ),
+        bottomNavigationBar:
+            BottomNavBarSection(pageview2Controller: pageview2Controller),
         //! backgroundColor:
         // Màu nền của Scaffold, có thể được đặt để thay đổi màu nền mặc định.
-        // backgroundColor: Colors.blue,
+        // backgroundColor: Colors.black,
       ),
     );
   }
