@@ -36,6 +36,15 @@ class BodySection extends StatelessWidget {
             children: pageViewTwoChildren,
           ),
         )),
+        Expanded(
+            child: Container(
+          color: Colors.blue,
+        )),
+        Container(
+          color: Colors.green,
+          width: double.infinity,
+          height: 10,
+        )
       ],
     );
   }
