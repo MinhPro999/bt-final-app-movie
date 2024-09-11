@@ -19,7 +19,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       //? MyStatelessWidget chỉ đơn giản hiển thị một Text widget với giá trị text truyền vào.
       //? Khi giá trị text thay đổi, widget sẽ được xây dựng lại với giá trị mới.
-      home: MyStatelessWidget(text: 'Hello, World!'),
+      home: MyStatelessWidget(text: 'Hello, Huy Viet'),
     );
   }
 }
@@ -42,7 +42,7 @@ class MyStatelessWidget extends StatelessWidget {
             Text(text),
             TextButton(
                 onPressed: () {
-                  text = "Hello, Huy";
+                  text = "Hello, Việt";
                 },
                 child: const Text("Press to change Text"))
           ],

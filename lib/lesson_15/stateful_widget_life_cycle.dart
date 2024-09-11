@@ -1,9 +1,6 @@
 //! Vòng đời của StatefulWidget
 // Vòng đời của một StatefulWidget bao gồm nhiều giai đoạn và các phương thức tương ứng
 
-// Đây là nơi tốt để thực hiện các khởi tạo cần thiết,
-// chẳng hạn như khởi tạo biến trạng thái hoặc đăng ký lắng nghe sự kiện.
-
 // ignore_for_file: avoid_print
 
 import 'package:flutter/material.dart';
@@ -36,6 +33,7 @@ class MyStatefulWidget2 extends StatefulWidget {
 
 class _MyStatefulWidget2State extends State<MyStatefulWidget2> {
   int _counter = 0;
+  late DateTime currentTime;
 
   //! Giai đoạn 3: Xây dựng Widget
   // Phương thức build(BuildContext context) được gọi mỗi khi
@@ -43,6 +41,7 @@ class _MyStatefulWidget2State extends State<MyStatefulWidget2> {
   // Đây là nơi bạn định nghĩa cách widget sẽ hiển thị dựa trên trạng thái hiện tại.
   @override
   Widget build(BuildContext context) {
+    print("Build method is triggered!!!!!");
     return Scaffold(
       backgroundColor: Colors.amber,
       appBar: AppBar(
@@ -52,6 +51,7 @@ class _MyStatefulWidget2State extends State<MyStatefulWidget2> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
+            Text("Date time: $currentTime"),
             const Text('You have pushed the button this many times:'),
             Text('$_counter',
                 style: Theme.of(context).textTheme.headlineMedium),
@@ -95,9 +95,13 @@ class _MyStatefulWidget2State extends State<MyStatefulWidget2> {
   //! Giai đoạn 2: Khởi tạo State
   // initState(): Phương thức này được gọi ngay sau khi đối tượng State được tạo
   // và trước khi widget được xây dựng lần đầu tiên
+
+  // Đây là nơi tốt để thực hiện các khởi tạo cần thiết,
+  // chẳng hạn như khởi tạo biến trạng thái hoặc đăng ký lắng nghe sự kiện.
   @override
   void initState() {
     print("[MyStatefulWidget2] initState is triggered");
+    currentTime = DateTime.now();
     super.initState();
     // Thực hiện khởi tạo cần thiết
   }
