@@ -26,38 +26,48 @@ class ButtonDemoScreen extends StatelessWidget {
 
             //! ElevatedButton
             //? Một nút nổi lên với hiệu ứng đổ bóng, giúp nó nổi bật hơn trên nền.
-            ElevatedButton(
-              onPressed: () {
-                // Code to execute when the button is pressed
-              },
-              //? thuộc tính style cho phép bạn tùy chỉnh màu sắc nền, màu chữ, hình dạng và nhiều thuộc tính khác.
-              style: ElevatedButton.styleFrom(
-                foregroundColor: Colors.white,
-                backgroundColor: Colors.blue, // Màu chữ
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(12), // Hình dạng
+            SizedBox(
+              width: double.infinity,
+              child: ElevatedButton(
+                onPressed: () {
+                  // Code to execute when the button is pressed
+                  print("Elevated button is pressed");
+                },
+                //? thuộc tính style cho phép bạn tùy chỉnh màu sắc nền, màu chữ, hình dạng và nhiều thuộc tính khác.
+                style: ElevatedButton.styleFrom(
+                  foregroundColor: Colors.white,
+                  backgroundColor: Colors.blue, // Màu chữ
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(12), // Hình dạng
+                  ),
+                  padding: const EdgeInsets.symmetric(
+                      horizontal: 50, vertical: 20), // Khoảng cách bên trong
                 ),
-                padding: const EdgeInsets.symmetric(
-                    horizontal: 24, vertical: 12), // Khoảng cách bên trong
+                child: const Text('Elevated Button'),
               ),
-              child: const Text('Elevated Button'),
             ),
 
             //! TextButton
             //? Một nút đơn giản, không có hiệu ứng nổi hoặc đổ bóng.
             //? Thường được sử dụng cho các hành động đơn giản mà không yêu cầu nổi bật.
-            TextButton(
-              onPressed: () {
-                // Code to execute when the button is pressed
-              },
-              //? thuộc tính style để tùy chỉnh màu sắc chữ, màu nền, và nhiều thuộc tính khác.
-              style: TextButton.styleFrom(
-                foregroundColor: Colors.blue,
-                backgroundColor: Colors.grey[200], // Màu nền
-                padding: const EdgeInsets.all(16), // Khoảng cách bên trong
-                textStyle: const TextStyle(fontSize: 18), // Kích thước chữ
+            SizedBox(
+              width: double.infinity,
+              child: TextButton(
+                onPressed: () {
+                  // Code to execute when the button is pressed
+                  print("TextButton button is pressed");
+                },
+                //? thuộc tính style để tùy chỉnh màu sắc chữ, màu nền, và nhiều thuộc tính khác.
+                style: TextButton.styleFrom(
+                  foregroundColor: Colors.blue,
+                  // backgroundColor: Colors.grey[200], // Màu nền
+                  padding: const EdgeInsets.all(30), // Khoảng cách bên trong
+                  textStyle: const TextStyle(
+                      fontSize: 18,
+                      fontStyle: FontStyle.italic), // Kích thước chữ
+                ),
+                child: const Text('Text Button'),
               ),
-              child: const Text('Text Button'),
             ),
 
             //! OutlinedButton
@@ -71,7 +81,7 @@ class ButtonDemoScreen extends StatelessWidget {
               style: OutlinedButton.styleFrom(
                 foregroundColor: Colors.blue,
                 side: const BorderSide(
-                    color: Colors.blue, width: 2), // Màu và độ dày viền
+                    color: Colors.blue, width: 1), // Màu và độ dày viền
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(12), // Hình dạng
                 ),
@@ -89,7 +99,7 @@ class ButtonDemoScreen extends StatelessWidget {
               onPressed: () {
                 // Code to execute when the button is pressed
               },
-              iconSize: 30, // Kích thước biểu tượng
+              iconSize: 50, // Kích thước biểu tượng
             ),
 
             //! InkWell

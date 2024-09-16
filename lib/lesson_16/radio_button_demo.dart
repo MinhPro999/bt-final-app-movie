@@ -18,7 +18,7 @@ class MyRadioButtonExample extends StatefulWidget {
 }
 
 class _MyRadioButtonExampleState extends State<MyRadioButtonExample> {
-  String _selectedRadioListTileValue = 'Option 1';
+  String _selectedRadioListTileValue = 'a';
   String _selectedRadioValue = 'Option 1';
 
   @override
@@ -30,9 +30,11 @@ class _MyRadioButtonExampleState extends State<MyRadioButtonExample> {
       body: Column(
         children: [
           const Text("Radio List Tile Widget"),
+          Text(
+              "Giá trị của biến _selectedRadioListTileValue là: $_selectedRadioListTileValue "),
           RadioListTile<String>(
             title: const Text('Option 1'),
-            value: 'Option 1',
+            value: 'a',
             groupValue: _selectedRadioListTileValue,
             onChanged: (value) {
               setState(() {
@@ -42,7 +44,7 @@ class _MyRadioButtonExampleState extends State<MyRadioButtonExample> {
           ),
           RadioListTile<String>(
             title: const Text('Option 2'),
-            value: 'Option 2',
+            value: 'b',
             groupValue: _selectedRadioListTileValue,
             onChanged: (value) {
               setState(() {

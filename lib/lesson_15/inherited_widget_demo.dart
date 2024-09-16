@@ -94,6 +94,7 @@ class _ConfigProviderState extends State<ConfigProvider> {
           Expanded(child: widget.child),
           SafeArea(
             top: false,
+            // bottom: false,
             child: ElevatedButton(
               onPressed: () {
                 _updateConfig('UpdatedConfig'); // Cập nhật giá trị cấu hình

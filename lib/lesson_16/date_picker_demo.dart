@@ -21,7 +21,7 @@ class MyDatePickerExample extends StatefulWidget {
 }
 
 class _MyDatePickerExampleState extends State<MyDatePickerExample> {
-  DateTime _selectedDate = DateTime.now();
+  DateTime? _selectedDate;
 
   @override
   Widget build(BuildContext context) {
@@ -34,7 +34,9 @@ class _MyDatePickerExampleState extends State<MyDatePickerExample> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text(
-              'Selected Date: ${_selectedDate.toLocal()}',
+              (_selectedDate == null)
+                  ? 'Chưa có ngày dc chọn'
+                  : 'Selected Date: ${_selectedDate!.toLocal()}',
               style: const TextStyle(fontSize: 16),
             ),
             const SizedBox(height: 16),
@@ -55,7 +57,9 @@ class _MyDatePickerExampleState extends State<MyDatePickerExample> {
       firstDate: DateTime(2000),
       lastDate: DateTime(2101),
     );
+    print("Giá trị của biến pickedDate là: $pickedDate");
     if (pickedDate != null && pickedDate != _selectedDate) {
+      print("pickedData is Valid");
       setState(() {
         _selectedDate = pickedDate;
       });

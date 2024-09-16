@@ -50,11 +50,13 @@ class _MyFormExampleState extends State<MyFormExample> {
               TextFormField(
                 //? autovalidateMode
                 //? Đặt chế độ tự động validate để validation được thực hiện khi người dùng nhập liệu.
-                autovalidateMode: AutovalidateMode.onUserInteraction,
+                // autovalidateMode: AutovalidateMode.onUserInteraction,
                 decoration: const InputDecoration(labelText: 'Username'),
                 validator: (value) {
                   if (value == null || value.isEmpty) {
                     return 'Please enter some text';
+                  } else if (value.length < 3) {
+                    return 'Username quá ngắn. Vui lòng kiểm tra lại';
                   }
                   return null;
                 },
@@ -62,7 +64,7 @@ class _MyFormExampleState extends State<MyFormExample> {
               TextFormField(
                 //? autovalidateMode
                 //? Đặt chế độ tự động validate để validation được thực hiện khi người dùng nhập liệu.
-                autovalidateMode: AutovalidateMode.onUserInteraction,
+                // autovalidateMode: AutovalidateMode.onUserInteraction,
                 decoration: const InputDecoration(labelText: 'Password'),
                 obscureText: true,
                 validator: (value) {

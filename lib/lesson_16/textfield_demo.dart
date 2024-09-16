@@ -40,9 +40,9 @@ class MyTextFieldExample extends StatelessWidget {
               //! decoration
               //? Cung cấp các thuộc tính để trang trí TextField, như label, icon, và border.
               decoration: InputDecoration(
-                labelText: 'Enter text',
+                labelText: 'User name',
                 hintText: 'Type something...',
-                border: const OutlineInputBorder(),
+                // border: const OutlineInputBorder(),
                 prefixIcon: const Icon(Icons.text_fields),
                 suffixIcon: IconButton(
                   icon: const Icon(Icons.clear),
@@ -66,7 +66,7 @@ class MyTextFieldExample extends StatelessWidget {
 
               //! maxLength
               //? Đặt giới hạn số lượng ký tự người dùng có thể nhập.
-              maxLength: 100,
+              maxLength: 10,
 
               //! onChanged
               //? Callback khi chữ trong TextField thay đổi.
@@ -82,11 +82,11 @@ class MyTextFieldExample extends StatelessWidget {
 
               //! style
               //? Tùy chỉnh style chữ bên trong TextField.
-              style: const TextStyle(fontSize: 18, color: Colors.black),
+              style: const TextStyle(fontSize: 25, color: Colors.red),
 
               //! cursorColor
               //? Màu sắc của con trỏ văn bản.
-              cursorColor: Colors.blue,
+              cursorColor: Colors.red,
             ),
             ElevatedButton(
                 onPressed: () {
@@ -98,7 +98,7 @@ class MyTextFieldExample extends StatelessWidget {
                   print(
                       "Value hiện tại của TextField là gì: ${_controller.text}");
                 },
-                child: const Text("Get value of TextField"))
+                child: const Text("Get current text value of TextField"))
           ],
         ),
       ),

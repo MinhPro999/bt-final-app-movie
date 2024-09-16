@@ -22,6 +22,7 @@ class MyDropdownExample extends StatefulWidget {
 
 class _MyDropdownExampleState extends State<MyDropdownExample> {
   String? _selectedItem;
+  List<String> listOfOptions = ['Option 1', 'Option 2', 'Option 3'];
 
   @override
   Widget build(BuildContext context) {
@@ -33,10 +34,10 @@ class _MyDropdownExampleState extends State<MyDropdownExample> {
         child: DropdownButton<String>(
           hint: const Text('Select an option'),
           value: _selectedItem,
-          items: ['Option 1', 'Option 2', 'Option 3']
-              .map((item) => DropdownMenuItem<String>(
-                    value: item,
-                    child: Text(item),
+          items: listOfOptions
+              .map((valueOfEachItem) => DropdownMenuItem<String>(
+                    value: valueOfEachItem,
+                    child: Text(valueOfEachItem),
                   ))
               .toList(),
           onChanged: (value) {

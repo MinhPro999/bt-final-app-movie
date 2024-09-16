@@ -31,6 +31,7 @@ class _MyCheckboxExampleState extends State<MyCheckboxExample> {
           title: const Text('Check me'),
           value: _isChecked,
           onChanged: (value) {
+            print("value in onChanged: $value");
             setState(() {
               _isChecked = value!;
             });
