@@ -1,5 +1,6 @@
 //! PageView
-//? PageView trong Flutter là một widget cho phép người dùng cuộn qua nhiều trang (hoặc phần tử) bằng cách vuốt hoặc cuộn
+//? PageView trong Flutter là một widget cho phép người dùng cuộn qua nhiều trang (hoặc phần tử)
+//? bằng cách vuốt hoặc cuộn
 
 //! Ví dụ 1: Sử dụng PageView cơ bản
 // import 'package:flutter/material.dart';
@@ -16,15 +17,10 @@
 //     return Scaffold(
 //       appBar: AppBar(title: const Text('PageView Example')),
 //       body: PageView(
-//         //! children
-//         //? Danh sách các widget con mà PageView sẽ hiển thị. Mỗi widget trong danh sách đại diện cho một trang.
-//         onPageChanged: (int page) {
-//           print('Current page: $page');
-//         },
 //         //! scrollDirection
 //         //? Xác định hướng cuộn của PageView. Mặc định là Axis.horizontal (cuộn ngang).
 //         //? Bạn có thể thiết lập thành Axis.vertical để cuộn dọc.
-//         scrollDirection: Axis.vertical,
+//         scrollDirection: Axis.horizontal,
 //         //! children
 //         //? Danh sách các widget con mà PageView sẽ hiển thị. Mỗi widget trong danh sách đại diện cho một trang.
 //         children: <Widget>[
@@ -44,6 +40,9 @@
 //                   child: Text('Page 3',
 //                       style: TextStyle(color: Colors.white, fontSize: 30)))),
 //         ],
+//         onPageChanged: (int page) {
+//           print('Current page: ${page + 1}');
+//         },
 //       ),
 //     );
 //   }
@@ -79,6 +78,7 @@ class _MyPageViewState extends State<MyPageView> {
           children: [
             Expanded(
               child: PageView(
+                physics: const NeverScrollableScrollPhysics(),
                 controller: _pageController,
                 children: <Widget>[
                   Container(
@@ -106,12 +106,25 @@ class _MyPageViewState extends State<MyPageView> {
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.blue,
+                      foregroundColor: Colors.white),
                   onPressed: _goToPreviousPage,
                   child: const Text('Previous'),
                 ),
                 ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.blue,
+                      foregroundColor: Colors.white),
                   onPressed: _goToNextPage,
                   child: const Text('Next'),
+                ),
+                ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.blue,
+                      foregroundColor: Colors.white),
+                  onPressed: () => _goToIndicatedPage(2),
+                  child: const Text('Go to indicated page'),
                 ),
               ],
             ),
@@ -135,6 +148,13 @@ class _MyPageViewState extends State<MyPageView> {
         _currentPage = _pageController.page!.round(); // Cập nhật trang hiện tại
       });
     });
+  }
+
+  void _goToIndicatedPage(int page) {
+    if (page > 0 && page <= 2) {
+      _pageController.animateToPage(page,
+          duration: const Duration(seconds: 3), curve: Curves.easeIn);
+    }
   }
 
   void _goToNextPage() {

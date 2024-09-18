@@ -16,7 +16,7 @@
 //   @override
 //   Widget build(BuildContext context) {
 //     return DefaultTabController(
-//       length: 3, // Số lượng tab
+//       length: 8, // Số lượng tab
 //       child: Scaffold(
 //         appBar: AppBar(
 //           title: const Text('TabBar Example'),
@@ -24,6 +24,7 @@
 //           //? Là widget hiển thị một hàng các tab.
 //           //? Mỗi tab có thể chứa một tiêu đề hoặc một biểu tượng.
 //           bottom: const TabBar(
+//             padding: EdgeInsets.zero,
 //             //! tabs:
 //             //? Danh sách các tab sẽ hiển thị trên TabBar. Mỗi tab có thể là một widget như Tab,
 //             //? cho phép bạn tùy chỉnh tiêu đề hoặc biểu tượng.
@@ -32,12 +33,38 @@
 //                 text: 'Tab 1',
 //                 icon: Icon(Icons.home),
 //               ),
-//               Tab(text: 'Tab 2', icon: Icon(Icons.person)),
-//               Tab(text: 'Tab 3', icon: Icon(Icons.business)),
+//               Tab(
+//                 text: 'Tab 2',
+//                 icon: Icon(Icons.person),
+//               ),
+//               Tab(
+//                 text: 'Tab 3',
+//                 icon: Icon(Icons.business),
+//               ),
+//               Tab(
+//                 text: 'Tab 4',
+//                 icon: Icon(Icons.person),
+//               ),
+//               Tab(
+//                 text: 'Tab 5',
+//                 icon: Icon(Icons.business),
+//               ),
+//               Tab(
+//                 text: 'Tab 6',
+//                 icon: Icon(Icons.person),
+//               ),
+//               Tab(
+//                 text: 'Tab 7',
+//                 icon: Icon(Icons.business),
+//               ),
+//               Tab(
+//                 text: 'Tab 8',
+//                 icon: Icon(Icons.business),
+//               ),
 //             ],
 //             //! isScrollable
 //             //? Nếu đặt thành true, các tab sẽ có thể cuộn nếu có quá nhiều tab để vừa với màn hình. Mặc định là false.
-//             isScrollable: false,
+//             isScrollable: true,
 //             //! indicator
 //             //? Widget cho phép bạn tùy chỉnh cách hiển thị chỉ báo dưới các tab đang được chọn
 //             //? (ví dụ: một đường viền, một hình chữ nhật, v.v.).
@@ -48,7 +75,7 @@
 //             indicatorSize: TabBarIndicatorSize.tab,
 //           ),
 //         ),
-//         //! TabBar
+//         //! TabBarView
 //         //? Là widget cho phép hiển thị nội dung tương ứng với mỗi tab. Nó thường được sử dụng cùng với TabBar
 //         body: TabBarView(
 //           children: [
@@ -61,6 +88,21 @@
 //             Container(
 //                 color: Colors.red,
 //                 child: const Center(child: Text('Content for Tab 3'))),
+//             Container(
+//                 color: Colors.blue,
+//                 child: const Center(child: Text('Content for Tab 4'))),
+//             Container(
+//                 color: Colors.red,
+//                 child: const Center(child: Text('Content for Tab 5'))),
+//             Container(
+//                 color: Colors.red,
+//                 child: const Center(child: Text('Content for Tab 6'))),
+//             Container(
+//                 color: Colors.blue,
+//                 child: const Center(child: Text('Content for Tab 7'))),
+//             Container(
+//                 color: Colors.red,
+//                 child: const Center(child: Text('Content for Tab 8'))),
 //           ],
 //         ),
 //       ),

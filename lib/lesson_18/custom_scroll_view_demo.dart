@@ -36,14 +36,15 @@ class MyCustomScrollView extends StatelessWidget {
           //? Nó có thể có một tiêu đề, một không gian linh hoạt,
           //? và có thể hiển thị hình ảnh hoặc bất kỳ nội dung nào khác khi cuộn.
           SliverAppBar(
-            title: const Text('Custom Scroll View'),
+            // title: const Text('Custom Scroll View'),
             //? expandedHeight:
             //  Chiều cao tối đa của app bar khi nó được mở rộng.
-            expandedHeight: 200.0,
+            expandedHeight: 150.0,
             //? flexibleSpace
             //  Widget con có thể được sử dụng để tạo nội dung trong không gian mở rộng của app bar.
             //  Thường sử dụng FlexibleSpaceBar để thêm hình ảnh hoặc các widget khác.
             flexibleSpace: FlexibleSpaceBar(
+              title: const Text('Custom Scroll View'),
               background: Image.network(
                   'https://images.ctfassets.net/23aumh6u8s0i/4TsG2mTRrLFhlQ9G1m19sC/4c9f98d56165a0bdd71cbe7b9c2e2484/flutter',
                   fit: BoxFit.cover),
@@ -55,7 +56,7 @@ class MyCustomScrollView extends StatelessWidget {
             //? floating
             //  Nếu đặt là true, app bar sẽ hiển thị lại khi người dùng cuộn lên,
             //  ngay cả khi app bar đã cuộn ra ngoài màn hình. Điều này tạo ra một hiệu ứng "nổi" cho app bar.
-            floating: true,
+            floating: false,
           ),
           //! SliverList
           //? Là một danh sách các phần tử có thể cuộn, tương tự như ListView và ListView.builder().
