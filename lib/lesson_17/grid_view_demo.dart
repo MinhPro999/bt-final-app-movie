@@ -1,14 +1,13 @@
 //! GridView là gì?
-//? GridView là widget cuộn hai chiều (có thể cuộn theo cả chiều dọc và ngang)
-//? để hiển thị các phần tử theo dạng lưới.
+//? GridView hiển thị một danh sách theo cả chiều dọc và chiều ngang
 
-//? Bạn có thể điều chỉnh số cột và số hàng để phù hợp với bố trí lưới của bạn.
+//? Các phần tử có trong GridView sẽ hiển thị  theo dạng lưới.
 
-//! Ứng Dụng Thực Tế
-//? Hiển thị ảnh: Trong một ứng dụng ảnh, bạn có thể sử dụng GridView để hiển thị các ảnh theo dạng lưới.
-//? Cửa hàng trực tuyến: Hiển thị các sản phẩm theo dạng lưới.
+//? Trong GridView, bạn cần chú ý về các khái niệm:
+//    - Main Axis: là trục cùng phương với ScrollDirection
+//    - Cross Axis: là trục vuông góc với ScrollDirection
 
-//! Các Loại GridView
+//! Các Loại GridView phổ biến
 
 //?  1. GridView:
 //      Hiển thị một lưới các phần tử con theo cấu hình lưới
@@ -17,10 +16,6 @@
 //?  2. GridView.builder:
 //      Tạo lưới động bằng cách chỉ tạo phần tử khi chúng cần được hiển thị.
 //      Thích hợp cho các lưới có số lượng phần tử không xác định.
-
-//?  3. GridView.custom
-//      Cung cấp linh hoạt tối đa bằng cách cho phép bạn tùy chỉnh cách phần tử được tạo
-//      và sắp xếp trong lưới.
 
 //! Ví Dụ 1: Lưới Cơ Bản
 import 'package:flutter/material.dart';
@@ -42,10 +37,15 @@ class BasicGridView extends StatelessWidget {
         crossAxisSpacing: 4.0, // Khoảng cách giữa các cột
         mainAxisSpacing: 4.0, // Khoảng cách giữa các hàng
       ),
+      //? shrinkWrap
+      // là biến dùng để điều khiển chiều main của GridView
+      //?   true: kích thước main của GridView được tự set sao cho chứa vừa đủ toàn bộ được item, ko lấy dư
+      //?   false: kích thước main của Gridview không được tự set, mà phải dựa vào Parent
+      // shrinkWrap: true,
       children: <Widget>[
         Container(color: Colors.red, height: 100),
         Container(color: Colors.green, height: 100),
-        Container(color: Colors.blue, height: 100),
+        Container(color: Colors.black, height: 100),
         Container(color: Colors.yellow, height: 100),
         Container(color: Colors.purple, height: 100),
       ],
@@ -61,7 +61,15 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(title: const Text('GridView Example')),
-        body: const BasicGridView(),
+        body: Stack(
+          children: [
+            Container(
+              color: Colors.white,
+            ),
+            Container(
+                color: Colors.lightBlueAccent, child: const BasicGridView()),
+          ],
+        ),
       ),
     );
   }

@@ -4,6 +4,12 @@
 //  Nó chỉ hỗ trợ một phần tử con duy nhất
 //  nhưng phần tử này có thể là một widget chứa nhiều phần tử con khác, vd: Column, Row.
 
+//? SingleChildScrollView có các property thường gặp như:
+// - physics
+// - reverse
+// - padding
+// - scrollDirection
+
 import 'package:flutter/material.dart';
 
 void main() {
