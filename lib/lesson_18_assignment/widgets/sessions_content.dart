@@ -24,17 +24,17 @@ class SessionsContent extends StatelessWidget {
                 time: "14:40",
                 typeOfTheater: "Pyc",
                 theaterName: "Eurasia Cinema7",
-                listPriceByPriceType: [2200, 1000, 1500, null]),
+                listPriceByPriceType: [2200, null, 1500, null]),
             ShowtimeItem(
                 time: "14:40",
                 typeOfTheater: "Pyc",
                 theaterName: "Eurasia Cinema7",
-                listPriceByPriceType: [2200, 1000, 1500, null]),
+                listPriceByPriceType: [null, 1000, 1500, null]),
             ShowtimeItem(
                 time: "14:40",
                 typeOfTheater: "Pyc",
                 theaterName: "Eurasia Cinema7",
-                listPriceByPriceType: [2200, 1000, 1500, null]),
+                listPriceByPriceType: [null, 1000, 1500, null]),
             ShowtimeItem(
                 time: "14:40",
                 typeOfTheater: "Pyc",

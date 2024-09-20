@@ -1,7 +1,11 @@
 //! Ví Dụ 2: Sử Dụng Navigator với Named Routes
 
 import 'package:flutter/material.dart';
+import 'package:flutter_learning/lesson_19/navigator_demo/routes_constant.dart';
+import 'package:flutter_learning/lesson_19/navigator_demo/screens/detail_2_page.dart';
+import 'package:flutter_learning/lesson_19/navigator_demo/screens/detail_page.dart';
 import 'package:flutter_learning/lesson_19/navigator_demo/screens/new_page.dart';
+import 'package:flutter_learning/lesson_19/navigator_demo/screens/not_found_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -22,7 +26,8 @@ class HomePage extends StatelessWidget {
                 //! pushNamed
                 //? Mở một màn hình mới bằng tên route đã định nghĩa trong MaterialApp.
                 // Khi nhấn, nó sẽ gọi Navigator.pushNamed(context, '/new') để mở NewPage thông qua tên route.
-                Navigator.pushNamed(context, '/new'); // Sử dụng pushNamed
+                Navigator.pushNamed(
+                    context, newScreenRoute); // Sử dụng pushNamed
               },
               child: const Text('Go to New Page'),
             ),
@@ -60,30 +65,32 @@ class MyApp extends StatelessWidget {
       //    - Không cần phải xử lý bất kỳ điều gì phức tạp.
       //? Hạn chế:
       //    - Không cho phép bạn tùy chỉnh logic khi điều hướng (ví dụ: thêm dữ liệu vào route hoặc xử lý lỗi).
-      routes: {
-        '/': (context) => const HomePage(),
-        '/new': (context) => const NewPage(),
-      },
+      // routes: {
+      //   '/': (context) => const HomePage(),
+      //   '/new': (context) => const NewPage(),
+      // },
       //! onGenerateRoute
       //? cho phép bạn viết logic tùy chỉnh cho việc tạo route.
       //? Điều này hữu ích khi bạn cần điều hướng với tham số, xử lý lỗi, hoặc tạo các route động.
-      // onGenerateRoute: (RouteSettings settings) {
-      //   switch (settings.name) {
-      //     case '/':
-      //       return MaterialPageRoute(builder: (context) => const HomePage());
-      //     case '/new':
-      //       return MaterialPageRoute(builder: (context) => const NewPage());
-      //     case '/detail':
-      //       // Nhận tham số từ arguments
-      //       final String data = settings.arguments as String;
-      //       return MaterialPageRoute(
-      //         builder: (context) => DetailPage(data: data),
-      //       );
-      //     default:
-      //       return MaterialPageRoute(
-      //           builder: (context) => const NotFoundPage());
-      //   }
-      // },
+      onGenerateRoute: (RouteSettings settings) {
+        switch (settings.name) {
+          case defaultRoute:
+            return MaterialPageRoute(builder: (context) => const HomePage());
+          case newScreenRoute:
+            return MaterialPageRoute(builder: (context) => const NewPage());
+          case detailScreenRoute:
+            // Nhận tham số từ arguments
+            final String data = settings.arguments as String;
+            return MaterialPageRoute(
+              builder: (context) => DetailPage(data: data),
+            );
+          case detailScreen2Route:
+            return MaterialPageRoute(builder: (context) => const DetailPage2());
+          default:
+            return MaterialPageRoute(
+                builder: (context) => const NotFoundPage());
+        }
+      },
     );
   }
 }

@@ -10,8 +10,9 @@ class NotFoundPage extends StatelessWidget {
         color: Colors.red,
         child: Center(
           child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              const Text("404: Not Found Scree"),
+              const Text("404: Not Found Screen"),
               const SizedBox(),
               ElevatedButton(
                 child: const Text("404: Not Found Screen"),
