@@ -26,7 +26,10 @@ class HomePage extends StatelessWidget {
               'This is a themed text.',
               //! Sử dụng Theme.of(context).textTheme.bodyLarge để lấy kiểu chữ cho văn bản.
               //! Kiểu chữ này được định nghĩa trong textTheme.
-              style: Theme.of(context).textTheme.bodyLarge,
+              style: Theme.of(context)
+                  .textTheme
+                  .bodyLarge!
+                  .copyWith(color: Colors.black),
             ),
             const SizedBox(height: 20),
             //! Màu nền của nút sẽ sử dụng buttonColor từ buttonTheme, giúp nút hiển thị với màu xanh.
@@ -57,6 +60,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       theme: ThemeData(
+        fontFamily: 'SofadiOne',
         //! primaryColor
         //? là màu chính duy nhất cho ứng dụng. Nó được sử dụng cho các widget như AppBar, FloatingActionButton, và các phần tử khác trong ứng dụng.
         primaryColor: Colors.red,
@@ -64,11 +68,13 @@ class MyApp extends StatelessWidget {
         //? Đây là một thuộc tính quan trọng mới hơn, cho phép bạn xác định một bảng màu hoàn chỉnh cho ứng dụng.
         //?  Nó bao gồm các màu sắc như primary, secondary, background, surface, error, v.v.
         colorScheme: const ColorScheme.light(
-                primary: Colors.blue, secondary: Colors.lightBlue)
-            .copyWith(secondary: Colors.orange), // Màu phụ
+          primary: Colors.blue,
+          secondary: Colors.lightBlue,
+        ).copyWith(secondary: Colors.orange), // Màu phụ
         //! textTheme
         //? Định nghĩa các kiểu chữ cho các loại văn bản trong ứng dụng.
         textTheme: const TextTheme(
+          displayLarge: TextStyle(fontSize: 24, color: Colors.amber),
           bodyLarge: TextStyle(fontSize: 18, color: Colors.black),
           bodyMedium: TextStyle(fontSize: 16, color: Colors.grey),
         ),
@@ -76,7 +82,11 @@ class MyApp extends StatelessWidget {
         //? Cấu hình cho AppBar, bao gồm màu nền, màu chữ, và các thuộc tính khác.
         appBarTheme: const AppBarTheme(
           backgroundColor: Colors.blue,
-          titleTextStyle: TextStyle(color: Colors.white, fontSize: 20),
+          titleTextStyle: TextStyle(
+            color: Colors.white,
+            fontSize: 20,
+            fontFamily: 'SofadiOne',
+          ),
         ),
         //! buttonTheme
         //? Cấu hình giao diện cho các nút trong ứng dụng.
