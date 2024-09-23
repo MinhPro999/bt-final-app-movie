@@ -1,4 +1,5 @@
 {
     "@@locale": "es",
-    "helloWorld": "¡Hola Mundo!"
-  }
+    "helloWorld": "¡Hola Mundo!",
+    "helloVTI": "Hola VTI, Paju Dora?"
+}

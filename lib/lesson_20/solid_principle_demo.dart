@@ -35,9 +35,9 @@
 //     return a * b;
 //   }
 
-//   void printSum(int sum) {
-//     print(sum);
-//   }
+//   // void printSum(int sum) {
+//   //   print(sum);
+//   // }
 
 //   int substract(int a, int b) {
 //     return a - b;
@@ -65,16 +65,16 @@
 
 // //! UserManager quản lý các hoạt động liên quan đến người dùng trong database
 // class UserManager {
-//   void saveUser(User user) {
-//     // Lưu thông tin người dùng vào database
-//   }
-
 //   void deleteUser(User user) {
 //     // Xóa người dùng khỏi database
 //   }
+
+//   void saveUser(User user) {
+//     // Lưu thông tin người dùng vào database
+//   }
 // }
 
-// //! UserValidator chịu trách nhiệm xác thực người dùng.
+// // //! UserValidator chịu trách nhiệm xác thực người dùng.
 // class UserValidator {
 //   bool validateUser(User user) {
 //     // Kiểm tra thông tin người dùng
@@ -85,7 +85,6 @@
 //! Open closed Principle
 //? Các object nên cho phép mở rộng nhưng không cho phép điều chỉnh.
 //? Có nghĩa là bạn nên mở rộng class để bổ sung thêm các chức năng, chứ đừng chỉnh sửa trực tiếp nó
-
 
 //! Ví dụ:
 //? Shape là một lớp trừu tượng với phương thức area().

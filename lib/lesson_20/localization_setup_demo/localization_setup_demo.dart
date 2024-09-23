@@ -18,6 +18,8 @@
 //! Bước 2: Cấu Hình Ứng Dụng
 //? Cập nhật file lib/main.dart để thêm hỗ trợ đa ngôn ngữ
 
+// ignore_for_file: avoid_print
+
 import 'package:flutter/material.dart';
 import 'package:flutter_learning/l10n/generated/app_localizations.dart';
 
@@ -36,8 +38,7 @@ class MyApp extends StatelessWidget {
       supportedLocales: AppLocalizations.supportedLocales,
       localeResolutionCallback: (locale, supportedLocales) {
         for (var supportedLocale in supportedLocales) {
-          if (supportedLocale.languageCode == locale?.languageCode &&
-              supportedLocale.countryCode == locale?.countryCode) {
+          if (supportedLocale.languageCode == locale?.languageCode) {
             return supportedLocale;
           }
         }
@@ -58,13 +59,8 @@ class MyHomePage extends StatelessWidget {
         title: Text(AppLocalizations.of(context)!.helloWorld),
       ),
       body: Center(
-        child: Text(AppLocalizations.of(context)!.helloWorld),
+        child: Text(AppLocalizations.of(context)!.helloVTI),
       ),
     );
   }
 }
-
-//! Bước 3: Tạo và Sử Dụng Các File Ngôn Ngữ
-
-// Tạo một thư mục l10n trong thư mục lib và thêm các file ARB (Application Resource Bundle) 
-// cho mỗi ngôn ngữ mà bạn muốn hỗ trợ. Ví dụ, bạn có thể tạo các file app_en.arb và app_es.arb cho tiếng Anh và tiếng Tây Ban Nha:

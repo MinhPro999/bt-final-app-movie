@@ -16,14 +16,20 @@ class MyTheme {
       ),
       scaffoldBackgroundColor: const Color(0xff1A2232), // Màu nền cho Scaffold
       appBarTheme: const AppBarTheme(
-          backgroundColor: Color(0xff1A2232), // Màu nền cho AppBar
-          titleTextStyle: TextStyle(
-              fontSize: 18,
-              color: Colors.white,
-              fontFamily: 'Inter',
-              fontWeight: FontWeight.w700),
-          iconTheme: IconThemeData(color: Color(0xff637394))),
+        backgroundColor: Color(0xff1A2232), // Màu nền cho AppBar
+        titleTextStyle: TextStyle(
+            fontSize: 18,
+            color: Colors.white,
+            fontFamily: 'Inter',
+            fontWeight: FontWeight.w700),
+        iconTheme: IconThemeData(color: Color(0xff637394)),
+      ),
       textTheme: const TextTheme(
+        displayLarge: TextStyle(
+          fontSize: 57,
+          fontWeight: FontWeight.w400,
+          color: Colors.white,
+        ),
         bodyLarge: TextStyle(
             color: Colors.white,
             fontSize: 18), // Kiểu văn bản mặc định cho văn bản cơ thể
@@ -39,15 +45,12 @@ class MyTheme {
         textTheme: ButtonTextTheme
             .primary, // Sử dụng màu chính của chủ đề cho văn bản trên nút
       ),
-      inputDecorationTheme: InputDecorationTheme(
+      inputDecorationTheme: const InputDecorationTheme(
         filled: true,
         fillColor: Colors.black26,
-        border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(8),
-          borderSide: BorderSide.none,
-        ),
-        labelStyle: const TextStyle(color: Colors.white70),
-        hintStyle: const TextStyle(color: Colors.white54),
+        border: UnderlineInputBorder(),
+        labelStyle: TextStyle(color: Colors.white70),
+        hintStyle: TextStyle(color: Colors.white54),
       ),
       tabBarTheme: TabBarTheme(
         indicatorColor: const Color(0xffFF8036),
@@ -90,7 +93,7 @@ class MyTheme {
               WidgetStateProperty.all(const Color(0xffFF8036).withOpacity(.5)),
           padding: WidgetStateProperty.all(
             const EdgeInsets.symmetric(
-                horizontal: 30, vertical: 15), // Khoảng cách bên trong
+                horizontal: 30, vertical: 16), // Khoảng cách bên trong
           ),
         ),
       ),
