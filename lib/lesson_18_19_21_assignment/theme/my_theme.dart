@@ -79,23 +79,23 @@ class MyTheme {
       elevatedButtonTheme: ElevatedButtonThemeData(
         style: ButtonStyle(
           backgroundColor:
-              MaterialStateProperty.all(const Color(0xffFF8036)), // Màu nền
+              WidgetStateProperty.all(const Color(0xffFF8036)), // Màu nền
           foregroundColor:
-              MaterialStateProperty.all(Colors.white), // Màu chữ và icon
-          elevation: MaterialStateProperty.all(5), // Độ cao của bóng
-          shape: MaterialStateProperty.all(
+              WidgetStateProperty.all(Colors.white), // Màu chữ và icon
+          elevation: WidgetStateProperty.all(5), // Độ cao của bóng
+          shape: WidgetStateProperty.all(
             RoundedRectangleBorder(
               // Hình dạng của nút
               borderRadius: BorderRadius.circular(8),
             ),
           ),
-          textStyle: MaterialStateProperty.all(const TextStyle(
+          textStyle: WidgetStateProperty.all(const TextStyle(
             fontWeight: FontWeight.w700,
             fontSize: 18,
           )),
-          shadowColor: MaterialStateProperty.all(
-              const Color(0xffFF8036).withOpacity(.5)),
-          padding: MaterialStateProperty.all(
+          shadowColor:
+              WidgetStateProperty.all(const Color(0xffFF8036).withOpacity(.5)),
+          padding: WidgetStateProperty.all(
             const EdgeInsets.symmetric(
                 horizontal: 30, vertical: 16), // Khoảng cách bên trong
           ),

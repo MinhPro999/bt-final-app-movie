@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_learning/lesson_18_19_21_assignment/screens/home/home_screen.dart';
 import 'package:flutter_learning/lesson_18_19_21_assignment/screens/login/login_screen.dart';
 import 'package:flutter_learning/lesson_18_19_21_assignment/theme/my_theme.dart';
 import 'package:flutter_learning/lesson_19/navigator_demo/screens/not_found_page.dart';
@@ -18,11 +19,13 @@ class MyApp extends StatelessWidget {
         switch (settings.name) {
           case '/':
             return MaterialPageRoute(builder: (_) => const LoginScreen());
+          case 'home':
+            return MaterialPageRoute(builder: (_) => const HomeScreen());
           default:
             return MaterialPageRoute(builder: (_) => const NotFoundPage());
         }
       },
-      initialRoute: '/',
+      initialRoute: 'home',
     );
   }
 }
