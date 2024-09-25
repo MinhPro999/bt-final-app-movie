@@ -35,13 +35,13 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Demo Localization',
       //! chỉ định Ngôn ngữ cho app
-      //? Dùng cho TH hệ thống đã lưu lại ngôn ngữ mà user đã chọn để sử dụng trong app và
+      //? Dùng cho TH hệ thống đã lưu lại ngôn ngữ mà user đã chọn để sử dụng trong app
       locale: const Locale('vi'),
       localizationsDelegates: AppLocalizations.localizationsDelegates,
       supportedLocales: AppLocalizations.supportedLocales,
-      localeResolutionCallback: (locale, supportedLocales) {
+      localeResolutionCallback: (deviceLocale, supportedLocales) {
         for (var supportedLocale in supportedLocales) {
-          if (supportedLocale.languageCode == locale?.languageCode) {
+          if (supportedLocale.languageCode == deviceLocale?.languageCode) {
             return supportedLocale;
           }
         }

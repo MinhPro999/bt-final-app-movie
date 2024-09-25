@@ -1,7 +1,7 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
 import 'package:flutter_learning/lesson_18_19_21_assignment/screens/home/widgets/header_section.dart';
-import 'package:flutter_learning/lesson_18_19_21_assignment/screens/home/widgets/movie_type_section.dart';
+import 'package:flutter_learning/lesson_18_19_21_assignment/screens/home/widgets/movie_item.dart';
 import 'package:flutter_learning/lesson_18_19_21_assignment/screens/home/widgets/upcoming_section.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
@@ -27,10 +27,10 @@ class _HomeScreenState extends State<HomeScreen> {
         children: [
           const HeaderSection(),
           Expanded(
-            child: SingleChildScrollView(
-              child: Column(
-                children: [
-                  UpcomingSection(
+            child: CustomScrollView(
+              slivers: [
+                SliverToBoxAdapter(
+                  child: UpcomingSection(
                     listUpcommingMoviesPoster: listUpcommingMoviesPoster,
                     setStateFunc: (index) {
                       setState(() {
@@ -38,35 +38,68 @@ class _HomeScreenState extends State<HomeScreen> {
                       });
                     },
                   ),
-                  AnimatedSmoothIndicator(
-                    activeIndex: currentIndex,
-                    count: listUpcommingMoviesPoster.length,
-                    effect: const ExpandingDotsEffect(
-                        activeDotColor: Color(0xffFF8036),
-                        expansionFactor: 2.5,
-                        spacing: 6,
-                        dotHeight: 8,
-                        dotColor: Color(0xff637394),
-                        dotWidth: 8),
+                ),
+                SliverToBoxAdapter(
+                  child: Center(
+                    child: AnimatedSmoothIndicator(
+                      activeIndex: currentIndex,
+                      count: listUpcommingMoviesPoster.length,
+                      effect: const ExpandingDotsEffect(
+                          activeDotColor: Color(0xffFF8036),
+                          expansionFactor: 2.5,
+                          spacing: 6,
+                          dotHeight: 8,
+                          dotColor: Color(0xff637394),
+                          dotWidth: 8),
+                    ),
                   ),
-                  Padding(
-                    padding: const EdgeInsets.only(top: 16.0),
-                    child: MovieTypeSection(
-                        title: "Now in cinemas",
-                        suffix: const Icon(
+                ),
+                const SliverToBoxAdapter(
+                  child: Padding(
+                    padding: EdgeInsets.all(16),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          "Now in cinemas",
+                          style: TextStyle(
+                              fontWeight: FontWeight.w700,
+                              fontSize: 24,
+                              color: Colors.white),
+                        ),
+                        Icon(
                           Icons.search,
                           color: Color(0xff637394),
                           size: 28,
-                        ),
-                        child: Container(
-                          height: 800,
-                          color: Colors.amber,
-                        )),
+                        )
+                      ],
+                    ),
                   ),
-                ],
-              ),
+                ),
+                SliverPadding(
+                  padding:
+                      const EdgeInsets.only(top: 16.0, left: 16, right: 16),
+                  sliver: SliverGrid.builder(
+                    itemCount: 5,
+                    gridDelegate:
+                        const SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 2,
+                      crossAxisSpacing: 16,
+                      mainAxisSpacing: 16,
+                      childAspectRatio: 163 / 278,
+                    ),
+                    itemBuilder: (_, index) => const MovieItem(
+                      posterImgPath:
+                          "https://rukminim2.flixcart.com/image/850/1000/k5wse4w0/poster/u/b/a/medium-artistic-movie-poster-thor-marvel-movie-poster-for-room-original-imafzgvb2xt8ptzx.jpeg?q=90&crop=false",
+                      title: "Thor",
+                      genre: "Action",
+                      score: 8.2,
+                    ),
+                  ),
+                ),
+              ],
             ),
-          )
+          ),
         ],
       ),
     );
