@@ -94,8 +94,7 @@ abstract class AppLocalizations {
   static const List<Locale> supportedLocales = <Locale>[
     Locale('en'),
     Locale('es'),
-    Locale('vi'),
-    Locale('vi', 'VN')
+    Locale('vi')
   ];
 
   /// No description provided for @helloWorld.
@@ -128,15 +127,6 @@ class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> 
 
 AppLocalizations lookupAppLocalizations(Locale locale) {
 
-  // Lookup logic when language+country codes are specified.
-  switch (locale.languageCode) {
-    case 'vi': {
-  switch (locale.countryCode) {
-    case 'VN': return AppLocalizationsViVn();
-   }
-  break;
-   }
-  }
 
   // Lookup logic when only language code is specified.
   switch (locale.languageCode) {
