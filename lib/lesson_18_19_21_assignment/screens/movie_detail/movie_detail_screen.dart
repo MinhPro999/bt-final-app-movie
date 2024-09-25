@@ -1,29 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_learning/lesson_18_19_assignment/screens/movie_detail/widgets/about_content.dart';
-import 'package:flutter_learning/lesson_18_19_assignment/screens/movie_detail/widgets/sessions_content.dart';
-import 'package:flutter_learning/lesson_18_19_assignment/theme/my_theme.dart';
-
-void main(List<String> args) {
-  runApp(const MyApp());
-}
+import 'package:flutter_learning/lesson_18_19_21_assignment/screens/movie_detail/widgets/about_content.dart';
+import 'package:flutter_learning/lesson_18_19_21_assignment/screens/movie_detail/widgets/sessions_content.dart';
 
 class MovieDetailScreen extends StatefulWidget {
   const MovieDetailScreen({super.key});
 
   @override
   State<MovieDetailScreen> createState() => _MovieDetailScreenState();
-}
-
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      theme: MyTheme.darkTheme(),
-      home: const MovieDetailScreen(),
-    );
-  }
 }
 
 class _MovieDetailScreenState extends State<MovieDetailScreen>

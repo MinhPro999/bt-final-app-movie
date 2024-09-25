@@ -40,18 +40,22 @@ class MyTheme {
             fontSize: 20,
             fontWeight: FontWeight.bold), // Cho tiêu đề
       ),
-      buttonTheme: const ButtonThemeData(
-        buttonColor: Colors.orange, // Màu nền cho nút bấm kiểu Raised
-        textTheme: ButtonTextTheme
-            .primary, // Sử dụng màu chính của chủ đề cho văn bản trên nút
-      ),
       inputDecorationTheme: const InputDecorationTheme(
-        filled: true,
-        fillColor: Colors.black26,
-        border: UnderlineInputBorder(),
-        labelStyle: TextStyle(color: Colors.white70),
-        hintStyle: TextStyle(color: Colors.white54),
-      ),
+          filled: true,
+          fillColor: Colors.transparent,
+          enabledBorder: UnderlineInputBorder(
+              borderSide: BorderSide(
+                  color: Color(
+                    0xffFF8036,
+                  ),
+                  width: 2)),
+          focusedBorder: UnderlineInputBorder(
+              borderSide: BorderSide(color: Color(0xffFF8036), width: 2)),
+          labelStyle: TextStyle(color: Colors.white70),
+          hintStyle: TextStyle(color: Colors.white54),
+          suffixIconColor: Color(0xff637394),
+          prefixIconColor: Color(0xffFF8036)),
+
       tabBarTheme: TabBarTheme(
         indicatorColor: const Color(0xffFF8036),
         unselectedLabelStyle: const TextStyle(
@@ -75,28 +79,31 @@ class MyTheme {
       elevatedButtonTheme: ElevatedButtonThemeData(
         style: ButtonStyle(
           backgroundColor:
-              WidgetStateProperty.all(const Color(0xffFF8036)), // Màu nền
+              MaterialStateProperty.all(const Color(0xffFF8036)), // Màu nền
           foregroundColor:
-              WidgetStateProperty.all(Colors.white), // Màu chữ và icon
-          elevation: WidgetStateProperty.all(5), // Độ cao của bóng
-          shape: WidgetStateProperty.all(
+              MaterialStateProperty.all(Colors.white), // Màu chữ và icon
+          elevation: MaterialStateProperty.all(5), // Độ cao của bóng
+          shape: MaterialStateProperty.all(
             RoundedRectangleBorder(
               // Hình dạng của nút
               borderRadius: BorderRadius.circular(8),
             ),
           ),
-          textStyle: WidgetStateProperty.all(const TextStyle(
+          textStyle: MaterialStateProperty.all(const TextStyle(
             fontWeight: FontWeight.w700,
             fontSize: 18,
           )),
-          shadowColor:
-              WidgetStateProperty.all(const Color(0xffFF8036).withOpacity(.5)),
-          padding: WidgetStateProperty.all(
+          shadowColor: MaterialStateProperty.all(
+              const Color(0xffFF8036).withOpacity(.5)),
+          padding: MaterialStateProperty.all(
             const EdgeInsets.symmetric(
                 horizontal: 30, vertical: 16), // Khoảng cách bên trong
           ),
         ),
       ),
+      splashColor:
+          const Color(0xff637394).withOpacity(.05), // Màu splash effect
+      highlightColor: Colors.transparent,
     );
   }
 }

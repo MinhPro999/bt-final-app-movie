@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_learning/lesson_18_19_assignment/screens/movie_detail/widgets/filter_section.dart';
-import 'package:flutter_learning/lesson_18_19_assignment/screens/movie_detail/widgets/group_by_section.dart';
-import 'package:flutter_learning/lesson_18_19_assignment/screens/movie_detail/widgets/show_time_item.dart';
+import 'package:flutter_learning/lesson_18_19_21_assignment/screens/movie_detail/widgets/filter_section.dart';
+import 'package:flutter_learning/lesson_18_19_21_assignment/screens/movie_detail/widgets/group_by_section.dart';
+import 'package:flutter_learning/lesson_18_19_21_assignment/screens/movie_detail/widgets/show_time_item.dart';
 
 class SessionsContent extends StatelessWidget {
   const SessionsContent({super.key});
