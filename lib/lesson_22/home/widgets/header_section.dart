@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_learning/lesson_18_19_21_assignment/screens/home/widgets/option_item.dart';
+import 'package:flutter_learning/lesson_22/home/widgets/option_item.dart';
 
 class HeaderSection extends StatelessWidget {
   const HeaderSection({

@@ -59,30 +59,38 @@ class InputItemSection extends StatelessWidget {
 }
 
 class UsernamePasswordSection extends StatelessWidget {
-  const UsernamePasswordSection({super.key});
+  final TextEditingController userNameTextController;
+  final TextEditingController passwordTextController;
+  const UsernamePasswordSection({
+    Key? key,
+    required this.userNameTextController,
+    required this.passwordTextController,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return const Column(
+    return Column(
       children: [
         InputItemSection(
           title: "Username",
           textfield: CustomTextfield(
+            controller: userNameTextController,
             hintText: "Enter your username",
-            prefixIcon: Icon(Icons.person),
+            prefixIcon: const Icon(Icons.person),
           ),
         ),
-        SizedBox(
+        const SizedBox(
           height: 24,
         ),
         InputItemSection(
           title: "Password",
           textfield: CustomTextfield(
+            controller: passwordTextController,
             hintText: "Enter your password",
-            prefixIcon: Icon(Icons.lock),
+            prefixIcon: const Icon(Icons.lock),
             obscureText: true,
             suffixIcon:
-                IconButton(onPressed: null, icon: Icon(Icons.visibility)),
+                const IconButton(onPressed: null, icon: Icon(Icons.visibility)),
           ),
         ),
       ],

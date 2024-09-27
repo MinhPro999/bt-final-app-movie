@@ -1,6 +1,6 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_learning/lesson_18_19_21_assignment/screens/home/widgets/movie_type_section.dart';
+import 'package:flutter_learning/lesson_22/home/widgets/movie_type_section.dart';
 
 class UpcomingSection extends StatelessWidget {
   final List<String> listUpcommingMoviesPoster;

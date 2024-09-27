@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_learning/lesson_18_19_21_assignment/screens/home/home_screen.dart';
-import 'package:flutter_learning/lesson_18_19_21_assignment/screens/login/login_screen.dart';
-import 'package:flutter_learning/lesson_18_19_21_assignment/theme/my_theme.dart';
 import 'package:flutter_learning/lesson_19/navigator_demo/screens/not_found_page.dart';
+import 'package:flutter_learning/lesson_22/home/home_screen.dart';
+import 'package:flutter_learning/lesson_22/login/login_screen.dart';
+import 'package:flutter_learning/lesson_22/theme/my_theme.dart';
 
 void main(List<String> args) {
   runApp(const MyApp());
@@ -25,7 +25,7 @@ class MyApp extends StatelessWidget {
             return MaterialPageRoute(builder: (_) => const NotFoundPage());
         }
       },
-      initialRoute: 'home',
+      initialRoute: '/',
     );
   }
 }

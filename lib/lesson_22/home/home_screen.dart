@@ -1,8 +1,8 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
-import 'package:flutter_learning/lesson_18_19_21_assignment/screens/home/widgets/header_section.dart';
-import 'package:flutter_learning/lesson_18_19_21_assignment/screens/home/widgets/movie_item.dart';
-import 'package:flutter_learning/lesson_18_19_21_assignment/screens/home/widgets/upcoming_section.dart';
+import 'package:flutter_learning/lesson_22/home/widgets/header_section.dart';
+import 'package:flutter_learning/lesson_22/home/widgets/movie_item.dart';
+import 'package:flutter_learning/lesson_22/home/widgets/upcoming_section.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class HomeScreen extends StatefulWidget {

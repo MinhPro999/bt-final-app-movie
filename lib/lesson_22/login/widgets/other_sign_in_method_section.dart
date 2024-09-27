@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_learning/lesson_18_19_21_assignment/screens/login/widgets/sign_in_method_item.dart';
+import 'package:flutter_learning/lesson_22/login/widgets/sign_in_method_item.dart';
 
 class OtherSignInMethodSection extends StatelessWidget {
   const OtherSignInMethodSection({
