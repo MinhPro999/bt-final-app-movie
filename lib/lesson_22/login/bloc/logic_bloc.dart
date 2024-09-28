@@ -8,6 +8,10 @@ part 'logic_state.dart';
 class LoginBloc extends Bloc<LoginEvent, LoginState> {
   LoginBloc() : super(InitialLoginState()) {
     on<LoginWithUsernamePassword>((event, emit) async {
+      final username = event.username;
+      final password = event.pasword;
+      print("Username là: $username");
+      print("Password là: $password");
       emit(LoadingLoginState());
       await Future.delayed(const Duration(seconds: 5), () {
         final random = Random();
@@ -15,7 +19,7 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
         if (isSuccess) {
           emit(SuccessfullyLoginState(
               successfulMsg:
-                  "Chúc mừng bạn đã login bằng username và password thành công"));
+                  "Chúc mừng username: $username đã login thành công"));
         } else {
           emit(FailedLoginState(
               errorMessage:

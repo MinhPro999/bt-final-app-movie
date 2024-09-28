@@ -94,11 +94,12 @@ class _LoginScreenState extends State<LoginScreen> {
                                       //? Khi nút đăng nhập được nhấn,
                                       //? một sự kiện LoginWithUsernamePassword sẽ được gửi tới LoginBloc
                                       //? với tên người dùng và mật khẩu từ các trường nhập liệu.
-                                      BlocProvider.of<LoginBloc>(context)
-                                          .add(LoginWithUsernamePassword(
-                                        username: userNameTextController.text,
-                                        pasword: passwordTextController.text,
-                                      ));
+                                      BlocProvider.of<LoginBloc>(context).add(
+                                          LoginWithUsernamePassword(
+                                              username:
+                                                  userNameTextController.text,
+                                              pasword:
+                                                  passwordTextController.text));
                                     },
                                   );
                                 },
