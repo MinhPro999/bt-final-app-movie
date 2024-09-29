@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 
 class ForgotPasswordSection extends StatelessWidget {
+  final void Function()? onTap;
   const ForgotPasswordSection({
     super.key,
+    this.onTap,
   });
 
   @override
@@ -10,7 +12,7 @@ class ForgotPasswordSection extends StatelessWidget {
     return Align(
       alignment: Alignment.centerRight,
       child: InkWell(
-        onTap: () {},
+        onTap: onTap,
         child: const Padding(
           padding: EdgeInsets.symmetric(vertical: 24),
           child: Text(

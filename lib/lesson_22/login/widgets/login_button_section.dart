@@ -6,7 +6,7 @@ class LoginButtonSection extends StatelessWidget {
   const LoginButtonSection({
     super.key,
     this.onPressed,
-    this.isLoading = true,
+    this.isLoading = false,
   });
 
   @override

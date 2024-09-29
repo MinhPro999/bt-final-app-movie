@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_learning/lesson_22/login/bloc/logic_bloc.dart';
 import 'package:flutter_learning/lesson_22/login/widgets/app_icon_section.dart';
 import 'package:flutter_learning/lesson_22/login/widgets/forgot_password_section.dart';
+import 'package:flutter_learning/lesson_22/login/widgets/loading_overlay.dart';
 import 'package:flutter_learning/lesson_22/login/widgets/login_button_section.dart';
 import 'package:flutter_learning/lesson_22/login/widgets/other_sign_in_method_section.dart';
 import 'package:flutter_learning/lesson_22/login/widgets/username_password_section.dart';
@@ -28,13 +29,11 @@ class _LoginScreenState extends State<LoginScreen> {
       child: Scaffold(
         body: Builder(builder: (context) {
           //! BlocListener
-          //? được dùng để lắng nghe các thay đổi trạng thái từ LoginBloc
-          //? và phản hồi (thông qua UI) dựa trên các trạng thái này.
-          return BlocListener<LoginBloc, LoginState>(
-            listener: (context, state) {
-              //? được dùng để lắng nghe các thay đổi trạng thái từ LoginBloc và phản hồi (thông qua UI)
-              //? dựa trên các trạng thái này.
 
+          return BlocConsumer<LoginBloc, LoginState>(
+            //? được dùng để lắng nghe các thay đổi trạng thái từ LoginBloc và phản hồi (thông qua UI)
+            //? dựa trên các trạng thái này.
+            listener: (context, state) {
               //?  Trong trường hợp này, nó đang lắng nghe các trạng thái thất bại và thành công của quá trình đăng nhập.
               if (state is FailedLoginState) {
                 ScaffoldMessenger.of(context).showSnackBar(SnackBar(
@@ -54,69 +53,109 @@ class _LoginScreenState extends State<LoginScreen> {
                 ));
               }
             },
-            child: GestureDetector(
-              onTap: () {
-                print(" onPressed");
-                FocusScope.of(context).unfocus();
-              },
-              behavior: HitTestBehavior
-                  .opaque, // Ensure taps on the empty space are registered
-              child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 36),
-                child: SafeArea(
-                  child: SingleChildScrollView(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        const Padding(
-                          padding: EdgeInsets.symmetric(vertical: 45),
-                          child: AppIconSection(),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.symmetric(vertical: 43),
+            builder: (_, state) {
+              final isLoading = state is LoadingLoginState;
+              return Stack(
+                children: [
+                  GestureDetector(
+                    onTap: () {
+                      FocusScope.of(context).unfocus();
+                    },
+                    behavior: HitTestBehavior
+                        .opaque, // Ensure taps on the empty space are registered
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 36),
+                      child: SafeArea(
+                        child: SingleChildScrollView(
                           child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
-                              UsernamePasswordSection(
-                                userNameTextController: userNameTextController,
-                                passwordTextController: passwordTextController,
+                              const Padding(
+                                padding: EdgeInsets.symmetric(vertical: 45),
+                                child: AppIconSection(),
                               ),
-                              const ForgotPasswordSection(),
-                              //! BlocBuilder
-                              //? được sử dụng để xây dựng UI phụ thuộc vào trạng thái hiện tại của LoginBloc
-                              BlocBuilder<LoginBloc, LoginState>(
-                                builder: (context, state) {
-                                  //? Trong trường hợp này, BlocBuilder xác định
-                                  //? nếu trạng thái là LoadingLoginState để hiển thị giao diện loading.
-                                  final isLoading = state is LoadingLoginState;
-                                  return LoginButtonSection(
-                                    isLoading: isLoading,
-                                    onPressed: () {
-                                      //? Khi nút đăng nhập được nhấn,
-                                      //? một sự kiện LoginWithUsernamePassword sẽ được gửi tới LoginBloc
-                                      //? với tên người dùng và mật khẩu từ các trường nhập liệu.
-                                      BlocProvider.of<LoginBloc>(context).add(
-                                          LoginWithUsernamePassword(
-                                              username:
-                                                  userNameTextController.text,
-                                              pasword:
-                                                  passwordTextController.text));
-                                    },
-                                  );
+                              Padding(
+                                padding:
+                                    const EdgeInsets.symmetric(vertical: 43),
+                                child: Column(
+                                  children: [
+                                    UsernamePasswordSection(
+                                      userNameTextController:
+                                          userNameTextController,
+                                      passwordTextController:
+                                          passwordTextController,
+                                    ),
+                                    ForgotPasswordSection(
+                                      onTap: () {
+                                        Navigator.of(context)
+                                            .pushNamed("forgot-password");
+                                      },
+                                    ),
+                                    // //! BlocBuilder
+                                    // //? được sử dụng để xây dựng UI phụ thuộc vào trạng thái hiện tại của LoginBloc
+                                    // BlocBuilder<LoginBloc, LoginState>(
+                                    //   builder: (context, state) {
+                                    //     //? Trong trường hợp này, BlocBuilder xác định
+                                    //     //? nếu trạng thái là LoadingLoginState để hiển thị giao diện loading.
+                                    //     final isLoading =
+                                    //         state is LoadingLoginState;
+                                    //     return LoginButtonSection(
+                                    //       isLoading: isLoading,
+                                    //       onPressed: () {
+                                    //         //? Khi nút đăng nhập được nhấn,
+                                    //         //? một sự kiện LoginWithUsernamePassword sẽ được gửi tới LoginBloc
+                                    //         //? với tên người dùng và mật khẩu từ các trường nhập liệu.
+                                    //         BlocProvider.of<LoginBloc>(context)
+                                    //             .add(LoginWithUsernamePassword(
+                                    //                 username:
+                                    //                     userNameTextController
+                                    //                         .text,
+                                    //                 pasword:
+                                    //                     passwordTextController
+                                    //                         .text));
+                                    //       },
+                                    //     );
+                                    //   },
+                                    // ),
+                                    LoginButtonSection(
+                                      onPressed: () {
+                                        //? Khi nút đăng nhập được nhấn,
+                                        //? một sự kiện LoginWithUsernamePassword sẽ được gửi tới LoginBloc
+                                        //? với tên người dùng và mật khẩu từ các trường nhập liệu.
+                                        BlocProvider.of<LoginBloc>(context).add(
+                                            LoginWithUsernamePassword(
+                                                username:
+                                                    userNameTextController.text,
+                                                pasword: passwordTextController
+                                                    .text));
+                                      },
+                                    )
+                                  ],
+                                ),
+                              ),
+                              const SizedBox(
+                                height: 45,
+                              ),
+                              OtherSignInMethodSection(
+                                onGoogleSignInTap: () {
+                                  BlocProvider.of<LoginBloc>(context)
+                                      .add(LoginWithThirdParty(isGoogle: true));
                                 },
-                              ),
+                                onFBSignInTap: () {
+                                  BlocProvider.of<LoginBloc>(context).add(
+                                      LoginWithThirdParty(isGoogle: false));
+                                },
+                              )
                             ],
                           ),
                         ),
-                        const SizedBox(
-                          height: 45,
-                        ),
-                        const OtherSignInMethodSection()
-                      ],
+                      ),
                     ),
                   ),
-                ),
-              ),
-            ),
+                  if (isLoading) const LoadingOverylay()
+                ],
+              );
+            },
           );
         }),
       ),

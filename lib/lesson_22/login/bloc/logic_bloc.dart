@@ -9,9 +9,6 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
   LoginBloc() : super(InitialLoginState()) {
     on<LoginWithUsernamePassword>((event, emit) async {
       final username = event.username;
-      final password = event.pasword;
-      print("Username là: $username");
-      print("Password là: $password");
       emit(LoadingLoginState());
       await Future.delayed(const Duration(seconds: 5), () {
         final random = Random();
@@ -28,7 +25,23 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
       });
     });
 
-    on<LoginWithThirdParty>((event, emit) {});
+    on<LoginWithThirdParty>((event, emit) async {
+      final isGoogleSignIn = event.isGoogle;
+      final signInMethod = isGoogleSignIn ? "Google" : "Facebook";
+      emit(LoadingLoginState());
+      await Future.delayed(const Duration(seconds: 5), () {
+        final random = Random();
+        final isSuccess = random.nextBool();
+        if (isSuccess) {
+          emit(SuccessfullyLoginState(
+              successfulMsg: "Bạn đã đăng nhập bằng $signInMethod thành công"));
+        } else {
+          emit(FailedLoginState(
+              errorMessage:
+                  "Đăng nhập bằng $signInMethod thất bại. Hãy thử lại sau!!!"));
+        }
+      });
+    });
 
     on<ForgotPassword>((event, emit) {});
   }

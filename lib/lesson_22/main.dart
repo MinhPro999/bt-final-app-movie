@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_learning/lesson_19/navigator_demo/screens/not_found_page.dart';
+import 'package:flutter_learning/lesson_22/forgot_password/forgot_password_screen.dart';
 import 'package:flutter_learning/lesson_22/home/home_screen.dart';
 import 'package:flutter_learning/lesson_22/login/login_screen.dart';
 import 'package:flutter_learning/lesson_22/theme/my_theme.dart';
@@ -21,6 +22,9 @@ class MyApp extends StatelessWidget {
             return MaterialPageRoute(builder: (_) => const LoginScreen());
           case 'home':
             return MaterialPageRoute(builder: (_) => const HomeScreen());
+          case 'forgot-password':
+            return MaterialPageRoute(
+                builder: (_) => const ForgotPasswordScreen());
           default:
             return MaterialPageRoute(builder: (_) => const NotFoundPage());
         }
