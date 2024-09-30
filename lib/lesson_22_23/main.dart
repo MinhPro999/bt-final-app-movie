@@ -5,6 +5,7 @@ import 'package:flutter_learning/lesson_19/navigator_demo/screens/not_found_page
 import 'package:flutter_learning/lesson_22_23/forgot_password/forgot_password_screen.dart';
 import 'package:flutter_learning/lesson_22_23/home/home_screen.dart';
 import 'package:flutter_learning/lesson_22_23/login/login_screen.dart';
+import 'package:flutter_learning/lesson_22_23/root_page.dart';
 import 'package:flutter_learning/lesson_22_23/theme/my_theme.dart';
 
 void main(List<String> args) async {
@@ -35,7 +36,7 @@ class MyApp extends StatelessWidget {
             return MaterialPageRoute(builder: (_) => const NotFoundPage());
         }
       },
-      initialRoute: '/',
+      home: const RootPage(),
     );
   }
 }

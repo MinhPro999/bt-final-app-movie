@@ -1,10 +1,13 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
 import 'package:flutter_learning/lesson_22_23/home/widgets/option_item.dart';
 
 class HeaderSection extends StatelessWidget {
+  final void Function()? onPressed;
   const HeaderSection({
-    super.key,
-  });
+    Key? key,
+    this.onPressed,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -26,20 +29,20 @@ class HeaderSection extends StatelessWidget {
           const SizedBox(
             width: 16,
           ),
-          const Expanded(
+          Expanded(
             child: Row(
               children: [
-                OptionItem(
+                const OptionItem(
                     iconPath: "assets/images/location_ic.png",
                     title: "Hồ Chí Minh"),
-                OptionItem(
+                const OptionItem(
                     iconPath: "assets/images/language_ic.png",
                     title: "Tiếng Việt"),
-                SizedBox(
+                const SizedBox(
                   width: 8,
                 ),
-                Spacer(),
-                IconButton(onPressed: null, icon: Icon(Icons.logout))
+                const Spacer(),
+                IconButton(onPressed: onPressed, icon: const Icon(Icons.logout))
               ],
             ),
           )
