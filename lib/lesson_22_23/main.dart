@@ -1,11 +1,17 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_learning/firebase_options.dart';
 import 'package:flutter_learning/lesson_19/navigator_demo/screens/not_found_page.dart';
-import 'package:flutter_learning/lesson_22/forgot_password/forgot_password_screen.dart';
-import 'package:flutter_learning/lesson_22/home/home_screen.dart';
-import 'package:flutter_learning/lesson_22/login/login_screen.dart';
-import 'package:flutter_learning/lesson_22/theme/my_theme.dart';
+import 'package:flutter_learning/lesson_22_23/forgot_password/forgot_password_screen.dart';
+import 'package:flutter_learning/lesson_22_23/home/home_screen.dart';
+import 'package:flutter_learning/lesson_22_23/login/login_screen.dart';
+import 'package:flutter_learning/lesson_22_23/theme/my_theme.dart';
 
-void main(List<String> args) {
+void main(List<String> args) async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
   runApp(const MyApp());
 }
 

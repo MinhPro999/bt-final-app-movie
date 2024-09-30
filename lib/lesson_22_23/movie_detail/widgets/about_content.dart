@@ -1,8 +1,8 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
-import 'package:flutter_learning/lesson_22/movie_detail/widgets/movie_info_section.dart';
-import 'package:flutter_learning/lesson_22/movie_detail/widgets/rating_section.dart';
-import 'package:flutter_learning/lesson_22/movie_detail/widgets/trailer_preview_section.dart';
+import 'package:flutter_learning/lesson_22_23/movie_detail/widgets/movie_info_section.dart';
+import 'package:flutter_learning/lesson_22_23/movie_detail/widgets/rating_section.dart';
+import 'package:flutter_learning/lesson_22_23/movie_detail/widgets/trailer_preview_section.dart';
 
 class AboutContent extends StatelessWidget {
   const AboutContent({super.key});

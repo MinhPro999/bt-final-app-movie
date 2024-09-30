@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_learning/lesson_22/movie_detail/widgets/filter_item_widget.dart';
+import 'package:flutter_learning/lesson_22_23/movie_detail/widgets/filter_item_widget.dart';
 import 'package:flutter_svg/svg.dart';
 
 class FilterSection extends StatelessWidget {

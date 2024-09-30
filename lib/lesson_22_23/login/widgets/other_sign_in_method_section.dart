@@ -1,6 +1,6 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
-import 'package:flutter_learning/lesson_22/login/widgets/sign_in_method_item.dart';
+import 'package:flutter_learning/lesson_22_23/login/widgets/sign_in_method_item.dart';
 
 class OtherSignInMethodSection extends StatelessWidget {
   final void Function()? onGoogleSignInTap;

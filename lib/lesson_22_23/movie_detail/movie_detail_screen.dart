@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_learning/lesson_22/movie_detail/widgets/about_content.dart';
-import 'package:flutter_learning/lesson_22/movie_detail/widgets/sessions_content.dart';
+import 'package:flutter_learning/lesson_22_23/movie_detail/widgets/about_content.dart';
+import 'package:flutter_learning/lesson_22_23/movie_detail/widgets/sessions_content.dart';
 
 class MovieDetailScreen extends StatefulWidget {
   const MovieDetailScreen({super.key});

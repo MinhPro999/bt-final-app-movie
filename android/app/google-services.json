@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "748160812086",
+    "project_id": "fir-flutter-tutorial-74531",
+    "storage_bucket": "fir-flutter-tutorial-74531.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:748160812086:android:16f090dc9e3396c47f0497",
+        "android_client_info": {
+          "package_name": "com.example.flutter_learning"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCBQ4wshl30ID4fdEUqo6mb6IQ7DV8IApM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
