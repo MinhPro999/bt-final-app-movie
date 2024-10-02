@@ -1,5 +1,8 @@
+// ignore_for_file: avoid_print
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
 part 'logic_event.dart';
@@ -39,20 +42,16 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
                     "Đăng nhập bằng $signInMethod thất bại. Hãy thử lại sau!!!"));
           }
         } else {
-          await Future.delayed(const Duration(seconds: 5));
-          emit(FailedLoginState(
-              errorMessage:
-                  "Đăng nhập bằng $signInMethod thất bại. Hãy thử lại sau!!!"));
-          // final isSucess = await signInWithFacebook();
-          // if (isSucess) {
-          //   emit(SuccessfullyLoginState(
-          //       successfulMsg:
-          //           "Bạn đã đăng nhập bằng $signInMethod thành công"));
-          // } else {
-          //   emit(FailedLoginState(
-          //       errorMessage:
-          //           "Đăng nhập bằng $signInMethod thất bại. Hãy thử lại sau!!!"));
-          // }
+          final isSuccess = await signInWithFacebook();
+          if (isSuccess) {
+            emit(SuccessfullyLoginState(
+                successfulMsg:
+                    "Bạn đã đăng nhập bằng $signInMethod thành công"));
+          } else {
+            emit(FailedLoginState(
+                errorMessage:
+                    "Đăng nhập bằng $signInMethod thất bại. Hãy thử lại sau!!!"));
+          }
         }
       } catch (e) {
         print("Error while using third-party authen service: $e");
@@ -74,6 +73,24 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
       return true;
     } on FirebaseAuthException catch (e) {
       print('Error: ${e.code}');
+      return false;
+    }
+  }
+
+  Future<bool> signInWithFacebook() async {
+    try {
+      final LoginResult result = await FacebookAuth.instance.login();
+
+      final OAuthCredential facebookAuthCredential =
+          FacebookAuthProvider.credential(result.accessToken!.tokenString);
+
+      await FirebaseAuth.instance.signInWithCredential(facebookAuthCredential);
+      return true;
+    } on FirebaseAuthException catch (e) {
+      print('Error while signing in with Facebook: ${e.code}');
+      return false;
+    } catch (e) {
+      print('Exception: $e');
       return false;
     }
   }

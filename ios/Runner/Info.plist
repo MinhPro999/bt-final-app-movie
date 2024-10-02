@@ -34,8 +34,20 @@
 			<array>
 				<!--Copied from GoogleService-Info.plist key REVESED_CLIENT_ID-->
 				<string>com.googleusercontent.apps.748160812086-tl7f11ne0nkdj5ev58mkgllbrb7nke3t</string>
+				<string>fb1478265992880475</string>
 			</array>
 		</dict>
+	</array>
+	<key>FacebookAppID</key>
+	<string>1478265992880475</string>
+	<key>FacebookClientToken</key>
+	<string>85937983c1869c97f8c2a495b1bb523e</string>
+	<key>FacebookDisplayName</key>
+	<string>firebase-flutter-tutorial</string>
+	<key>LSApplicationQueriesSchemes</key>
+	<array>
+		<string>fbapi</string>
+		<string>fb-messenger-share-api</string>
 	</array>
 	<key>CFBundleVersion</key>
 	<string>$(FLUTTER_BUILD_NUMBER)</string>
