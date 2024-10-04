@@ -1,4 +1,6 @@
 part of 'movie_info_bloc.dart';
+//! Bước 4.1: Xác định Events
 
-@immutable
-sealed class MovieInfoEvent {}
+class LoadMovies extends MoviesEvent {}
+
+abstract class MoviesEvent {}

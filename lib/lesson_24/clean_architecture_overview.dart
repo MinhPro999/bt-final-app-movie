@@ -75,6 +75,8 @@
 
 //! Bước 3: 
 //?   - 3.1: Tạo Data Sources, sử dụng Model trong DataSource
-//?   - Repository Implementations
+//?   - 3.2: Repository Implementations
 
-//! Bước 4: Tích hợp BLoC và Xây dựng UI
+//! Bước 4: Tích hợp BLoC
+
+//! Bước 5: Xây dựng UI và kết hợp BLoC

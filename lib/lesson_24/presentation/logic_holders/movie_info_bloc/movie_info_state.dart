@@ -1,6 +1,18 @@
 part of 'movie_info_bloc.dart';
+//! Bước 4.2: Xác định State
 
-@immutable
-sealed class MovieInfoState {}
+class MoviesError extends MoviesState {
+  final String message;
+  MoviesError(this.message);
+}
 
-final class MovieInfoInitial extends MovieInfoState {}
+class MoviesInitial extends MoviesState {}
+
+class MoviesLoaded extends MoviesState {
+  final List<Movie> movies;
+  MoviesLoaded(this.movies);
+}
+
+class MoviesLoading extends MoviesState {}
+
+abstract class MoviesState {}
