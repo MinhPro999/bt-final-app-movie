@@ -1,6 +1,6 @@
 //! Bước 1: Tạo Entities và Use Cases
-import 'package:flutter_learning/lesson_24/domain/entities/movie.dart';
-import 'package:flutter_learning/lesson_24/domain/repositories/movie_repository.dart';
+import 'package:flutter_learning/lesson_24_25/domain/entities/movie.dart';
+import 'package:flutter_learning/lesson_24_25/domain/repositories/movie_repository.dart';
 
 //!  use case để xử lý nghiệp vụ, ở đây có nghiệp vụ lấy danh sách phim
 class GetMovies {

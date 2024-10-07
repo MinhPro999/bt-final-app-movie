@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_learning/lesson_24/data/datasources/movie_remote_data_source.dart';
-import 'package:flutter_learning/lesson_24/data/repositories/movie_repository_impl.dart';
-import 'package:flutter_learning/lesson_24/domain/usecases/movie_usecase.dart';
-import 'package:flutter_learning/lesson_24/presentation/logic_holders/movie_info_bloc/movie_info_bloc.dart';
-import 'package:http/http.dart' as http;
+import 'package:flutter_learning/lesson_24_25/core/apis/dio_client.dart';
+import 'package:flutter_learning/lesson_24_25/data/datasources/movie_remote_data_source.dart';
+import 'package:flutter_learning/lesson_24_25/data/repositories/movie_repository_impl.dart';
+import 'package:flutter_learning/lesson_24_25/domain/usecases/movie_usecase.dart';
+import 'package:flutter_learning/lesson_24_25/presentation/logic_holders/movie_info_bloc/movie_info_bloc.dart';
 
 class NowPlayingMoviesScreen extends StatelessWidget {
-  const NowPlayingMoviesScreen({super.key});
+  final dioClient = DioClient();
+  NowPlayingMoviesScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +19,7 @@ class NowPlayingMoviesScreen extends StatelessWidget {
       body: BlocProvider<MovieInfoBloc>(
         create: (_) => MovieInfoBloc(GetMovies(MovieRepositoryImpl(
             remoteDataSource: MovieRemoteDataSourceImpl(
-          client: http.Client(),
+          dio: dioClient.dio,
         ))))
           ..add(LoadMovies()),
         child: BlocBuilder<MovieInfoBloc, MoviesState>(builder: (_, state) {

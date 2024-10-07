@@ -1,7 +1,7 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_learning/lesson_24/domain/entities/movie.dart';
-import 'package:flutter_learning/lesson_24/domain/usecases/movie_usecase.dart';
+import 'package:flutter_learning/lesson_24_25/domain/entities/movie.dart';
+import 'package:flutter_learning/lesson_24_25/domain/usecases/movie_usecase.dart';
 
 part 'movie_info_event.dart';
 part 'movie_info_state.dart';
