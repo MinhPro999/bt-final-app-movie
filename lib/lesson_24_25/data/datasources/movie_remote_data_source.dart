@@ -26,7 +26,9 @@ class MovieRemoteDataSourceImpl implements MovieRemoteDataSource {
       final List<dynamic> moviesJson = result.data['results'];
       //! Sử dụng Model trong DataSource
       return moviesJson.map((json) => MovieModel.fromJson(json)).toList();
-    } on DioException catch (e) {
+    }
+    //! Error Handling
+    on DioException catch (e) {
       printE(
           "[DioException] error type: ${e.type}, error message: ${e.message}");
     } catch (e) {
