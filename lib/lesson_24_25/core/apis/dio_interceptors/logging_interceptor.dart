@@ -7,7 +7,8 @@ class LoggingInterceptor extends Interceptor {
     // Xử lý lỗi
     printE('Request failed: ${err.message}');
     if (err.response != null) {
-      printE('Error response data: ${err.response?.data}');
+      printE(
+          'Error [Http Status Code: ${err.response?.statusCode}] response data: ${err.response?.data}');
     }
     return handler.next(err); // tiếp tục thực thi lỗi
   }

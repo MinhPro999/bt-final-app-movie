@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:flutter_learning/lesson_24_25/core/services/logger_service.dart';
 import 'package:flutter_learning/lesson_24_25/data/models/movie_model.dart';
 import 'package:flutter_learning/lesson_24_25/domain/entities/movie.dart';
 
@@ -19,15 +20,19 @@ class MovieRemoteDataSourceImpl implements MovieRemoteDataSource {
   Future<List<Movie>> getMovies() async {
     final queryParams = {'language': 'en-US', 'page': 1};
 
-    final result =
-        await dio.get("/movie/now_playing", queryParameters: queryParams);
-
-    if (result.statusCode == 200) {
+    try {
+      final result =
+          await dio.get("/movie/now_playing1234", queryParameters: queryParams);
       final List<dynamic> moviesJson = result.data['results'];
       //! Sử dụng Model trong DataSource
       return moviesJson.map((json) => MovieModel.fromJson(json)).toList();
-    } else {
-      throw Exception('Failed to load movies');
+    } on DioException catch (e) {
+      printE(
+          "[DioException] error type: ${e.type}, error message: ${e.message}");
+    } catch (e) {
+      printE("Unknown error: ${e.toString()}");
     }
+
+    return [];
   }
 }
