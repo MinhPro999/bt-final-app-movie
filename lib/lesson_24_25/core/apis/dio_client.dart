@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
-import 'package:flutter_learning/lesson_24_25/core/services/logger_service.dart';
+import 'package:flutter_learning/lesson_24_25/core/apis/dio_interceptors/logging_interceptor.dart';
+import 'package:flutter_learning/lesson_24_25/core/apis/dio_interceptors/token_interceptor.dart';
 import 'package:flutter_learning/lesson_24_25/core/utils/dot_env_util.dart';
 
 class DioClient {
@@ -13,28 +14,16 @@ class DioClient {
 
   void initDio() {
     dio = Dio();
-    final apiKey = DotEnvUtil.apiKey;
-    dio.options = BaseOptions(
-        baseUrl: baseUrl,
-        receiveTimeout: const Duration(seconds: 8),
-        headers: {
-          'Authorization': 'Bearer $apiKey',
-          'Accept': 'application/json'
-        });
-    dio.interceptors.add(InterceptorsWrapper(onRequest: (options, handler) {
-      // options.queryParameters.addAll({'api_key': DotEnvUtil.apiKey});
-      printI(
-          "[REQUEST] Api: ${options.path} | Method: ${options.method} | \nQuery parameter: ${options.queryParameters} | Body request data: ${options.data}");
-      return handler.next(options);
-    }, onResponse: (response, handler) {
-      final statusCode = response.statusCode;
-      final data = response.data;
-      final requestOptions = response.requestOptions;
-      printS(
-        "[RESPONSE][Code: $statusCode] Api: ${requestOptions.path} | Method: ${requestOptions.method} | Query parameter: ${requestOptions.queryParameters} | Body request data: ${requestOptions.data} | Data response: $data",
-      );
 
-      return handler.next(response);
-    }));
+    //! Cấu Hình Global
+    //? Bạn có thể thiết lập các cấu hình global cho tất cả các yêu cầu sử dụng Dio,
+    //? bao gồm timeout, base URL, headers, v.v.
+    dio.options = BaseOptions(
+      baseUrl: baseUrl,
+      receiveTimeout: const Duration(seconds: 8),
+      connectTimeout: const Duration(seconds: 3),
+    );
+    dio.interceptors.add(LoggingInterceptor());
+    dio.interceptors.add(TokenInterceptor());
   }
 }

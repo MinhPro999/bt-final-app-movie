@@ -17,15 +17,7 @@ class MovieRemoteDataSourceImpl implements MovieRemoteDataSource {
 
   @override
   Future<List<Movie>> getMovies() async {
-    // final apiKey = DotEnvUtil.apiKey;
-    // final host = DotEnvUtil.hostApi;
-    // final apiVersion = DotEnvUtil.apiVesion;
-    // var headers = {
-    //   'Authorization': 'Bearer $apiKey',
-    //   'Accept': 'application/json'
-    // };
     final queryParams = {'language': 'en-US', 'page': 1};
-    // final url = Uri.https(host, '$apiVersion/movie/now_playing', queryParams);
 
     final result =
         await dio.get("/movie/now_playing", queryParameters: queryParams);
