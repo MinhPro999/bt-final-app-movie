@@ -44,3 +44,7 @@ app.*.map.json
 
 #dot env
 *.env
+
+# FVM Version Cache
+.fvm/
+*.g.dart

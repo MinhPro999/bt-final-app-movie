@@ -26,7 +26,7 @@ class MovieInfoBloc extends Bloc<MoviesEvent, MoviesState> {
     emit(MoviesLoading());
     try {
       final movies = await getMovies();
-      emit(MoviesLoaded(movies));
+      emit(MoviesLoaded(movies ?? []));
     } catch (error) {
       emit(MoviesError(error.toString()));
     }

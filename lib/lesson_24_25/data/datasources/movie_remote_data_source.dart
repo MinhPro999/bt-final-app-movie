@@ -1,14 +1,17 @@
 import 'package:dio/dio.dart';
 import 'package:flutter_learning/lesson_24_25/core/services/logger_service.dart';
+import 'package:flutter_learning/lesson_24_25/data/models/genre_model.dart';
+import 'package:flutter_learning/lesson_24_25/data/models/image_config_info_model.dart';
 import 'package:flutter_learning/lesson_24_25/data/models/movie_model.dart';
-import 'package:flutter_learning/lesson_24_25/domain/entities/movie.dart';
 
 const apiKey =
     "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI4YTI1NTA5OTFlNGYzN2M0NTQxZGNhNzY4MWI2OTMwNiIsIm5iZiI6MTcyODAzNzE4Ni40NjA5NTUsInN1YiI6IjY2ZmQxZWNmYzZmYmIyZjBjZGYyM2QyYiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.EcYvxzToP5ipX3iLjbQrWJBETp7qxsxhmmsj50nwI-4";
 
 //! Bước 3.1: Tạo Data Sources, sử dụng Model trong DataSource
 abstract class MovieRemoteDataSource {
-  Future<List<Movie>> getMovies();
+  Future<List<GenreModel>?> getGenre();
+  Future<ImageConfigInfoModel?> getImageConfigInfo();
+  Future<List<MovieModel>?> getMovies();
 }
 
 class MovieRemoteDataSourceImpl implements MovieRemoteDataSource {
@@ -17,7 +20,39 @@ class MovieRemoteDataSourceImpl implements MovieRemoteDataSource {
   MovieRemoteDataSourceImpl({required this.dio});
 
   @override
-  Future<List<Movie>> getMovies() async {
+  Future<List<GenreModel>?> getGenre() async {
+    final queryParams = {'language': 'en'};
+    try {
+      final result =
+          await dio.get("/genre/movie/list", queryParameters: queryParams);
+      final List<dynamic> moviesJson = result.data['genres'];
+      //! Sử dụng Model trong DataSource
+      return moviesJson.map((json) => GenreModel.fromJson(json)).toList();
+    } on DioException catch (e) {
+      printE(
+          "[DioException] error type: ${e.type}, error message: ${e.message}");
+    } catch (e) {
+      printE("Unknown error: ${e.toString()}");
+    }
+    return null;
+  }
+
+  @override
+  Future<ImageConfigInfoModel?> getImageConfigInfo() async {
+    try {
+      final result = await dio.get("/configuration");
+      return ImageConfigInfoModel.fromJson(result.data['images']);
+    } on DioException catch (e) {
+      printE(
+          "[DioException] error type: ${e.type}, error message: ${e.message}");
+    } catch (e) {
+      printE("Unknown error: ${e.toString()}");
+    }
+    return null;
+  }
+
+  @override
+  Future<List<MovieModel>?> getMovies() async {
     final queryParams = {'language': 'en-US', 'page': 1};
 
     try {
@@ -35,6 +70,6 @@ class MovieRemoteDataSourceImpl implements MovieRemoteDataSource {
       printE("Unknown error: ${e.toString()}");
     }
 
-    return [];
+    return null;
   }
 }
