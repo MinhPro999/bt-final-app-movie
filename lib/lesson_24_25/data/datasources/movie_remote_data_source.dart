@@ -22,7 +22,7 @@ class MovieRemoteDataSourceImpl implements MovieRemoteDataSource {
 
     try {
       final result =
-          await dio.get("/movie/now_playing1234", queryParameters: queryParams);
+          await dio.get("/movie/now_playing", queryParameters: queryParams);
       final List<dynamic> moviesJson = result.data['results'];
       //! Sử dụng Model trong DataSource
       return moviesJson.map((json) => MovieModel.fromJson(json)).toList();
