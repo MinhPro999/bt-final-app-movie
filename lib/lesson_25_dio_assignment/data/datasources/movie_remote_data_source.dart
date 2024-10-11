@@ -4,9 +4,6 @@ import 'package:flutter_learning/lesson_25_dio_assignment/data/models/genre_mode
 import 'package:flutter_learning/lesson_25_dio_assignment/data/models/image_config_info_model.dart';
 import 'package:flutter_learning/lesson_25_dio_assignment/data/models/movie_model.dart';
 
-const apiKey =
-    "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI4YTI1NTA5OTFlNGYzN2M0NTQxZGNhNzY4MWI2OTMwNiIsIm5iZiI6MTcyODAzNzE4Ni40NjA5NTUsInN1YiI6IjY2ZmQxZWNmYzZmYmIyZjBjZGYyM2QyYiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.EcYvxzToP5ipX3iLjbQrWJBETp7qxsxhmmsj50nwI-4";
-
 //! Bước 3.1: Tạo Data Sources, sử dụng Model trong DataSource
 abstract class MovieRemoteDataSource {
   Future<List<GenreModel>?> getGenre();
