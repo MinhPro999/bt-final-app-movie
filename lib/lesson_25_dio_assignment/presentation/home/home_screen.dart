@@ -125,11 +125,11 @@ class _HomeScreenState extends State<HomeScreen> {
                                     childAspectRatio: 163 / 282,
                                   ),
                                   itemBuilder: (_, index) {
-                                    final genreTextsList =
+                                    final filteredGenreList =
                                         convertGenreIdsToGenreStrings(
                                             movies[index].genreIds,
                                             state.genreList!);
-                                    final selectedGenreTexts = genreTextsList
+                                    final selectedGenreTexts = filteredGenreList
                                         .map((e) => e.name)
                                         .toList();
                                     return MovieItem(
