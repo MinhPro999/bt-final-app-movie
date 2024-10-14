@@ -9,6 +9,7 @@ abstract class MovieRemoteDataSource {
   Future<List<GenreModel>?> getGenre();
   Future<ImageConfigInfoModel?> getImageConfigInfo();
   Future<List<MovieModel>?> getMovies();
+  Future<List<MovieModel>?> getUpcommingMovies();
 }
 
 class MovieRemoteDataSourceImpl implements MovieRemoteDataSource {
@@ -67,6 +68,23 @@ class MovieRemoteDataSourceImpl implements MovieRemoteDataSource {
       printE("Unknown error: ${e.toString()}");
     }
 
+    return null;
+  }
+
+  @override
+  Future<List<MovieModel>?> getUpcommingMovies() async {
+    try {
+      final queryParams = {'language': 'vi'};
+      final result =
+          await dio.get('/movie/upcoming', queryParameters: queryParams);
+      final upcommingMovies = result.data['results'] as List<dynamic>;
+      return upcommingMovies.map((json) => MovieModel.fromJson(json)).toList();
+    } on DioException catch (e) {
+      printE(
+          "[DioException] error type: ${e.type}, error message: ${e.message}");
+    } catch (e) {
+      printE("Unknown error: ${e.toString()}");
+    }
     return null;
   }
 }

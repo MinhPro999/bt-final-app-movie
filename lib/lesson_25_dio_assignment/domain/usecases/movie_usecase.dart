@@ -8,7 +8,11 @@ class GetMovies {
 
   GetMovies(this.repository);
 
-  Future<List<Movie>?> call() async {
+  Future<List<Movie>?> getNowPlayingMovies() async {
     return await repository.getMovies();
+  }
+
+  Future<List<Movie>?> getUpcommingMovie() {
+    return repository.getUpcommingMovies();
   }
 }

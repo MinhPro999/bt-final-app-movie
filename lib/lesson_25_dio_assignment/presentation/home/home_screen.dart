@@ -3,6 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_learning/lesson_25_dio_assignment/core/apis/dio_client.dart';
+import 'package:flutter_learning/lesson_25_dio_assignment/core/services/logger_service.dart';
 import 'package:flutter_learning/lesson_25_dio_assignment/core/utils/convert_util.dart';
 import 'package:flutter_learning/lesson_25_dio_assignment/data/datasources/movie_remote_data_source.dart';
 import 'package:flutter_learning/lesson_25_dio_assignment/data/repositories/movie_repository_impl.dart';
@@ -13,7 +14,6 @@ import 'package:flutter_learning/lesson_25_dio_assignment/presentation/home/widg
 import 'package:flutter_learning/lesson_25_dio_assignment/presentation/home/widgets/movie_item.dart';
 import 'package:flutter_learning/lesson_25_dio_assignment/presentation/home/widgets/upcoming_section.dart';
 import 'package:google_sign_in/google_sign_in.dart';
-import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -50,30 +50,57 @@ class _HomeScreenState extends State<HomeScreen> {
               child: CustomScrollView(
                 slivers: [
                   SliverToBoxAdapter(
-                    child: UpcomingSection(
-                      listUpcommingMoviesPoster: listUpcommingMoviesPoster,
-                      setStateFunc: (index) {
-                        setState(() {
-                          currentIndex = index;
-                        });
+                    child: BlocBuilder<MovieInfoBloc, MoviesState>(
+                      builder: (context, state) {
+                        if (state is MoviesLoaded) {
+                          final upcommingMovies = state.upcommingMovies;
+                          return BlocBuilder<GlobalInfoBloc, GlobalInfoState>(
+                              builder: (_, state) {
+                            if (state is GlobalInfoLoaded) {
+                              final imageConfigInfo = state.imageConfigInfo;
+                              final listPosterImage = upcommingMovies
+                                  .map((e) =>
+                                      imageConfigInfo!.baseUrl +
+                                      imageConfigInfo
+                                          .getPosterSizeText('w342') +
+                                      e.posterPath)
+                                  .toList();
+                              printI("List poster: $listPosterImage");
+                              return UpcomingSection(
+                                listUpcommingMoviesPoster: listPosterImage,
+                                setStateFunc: (index) {
+                                  setState(() {
+                                    currentIndex = index;
+                                  });
+                                },
+                              );
+                            }
+                            return const Center(
+                              child: CircularProgressIndicator(),
+                            );
+                          });
+                        }
+                        return const Center(
+                          child: CircularProgressIndicator(),
+                        );
                       },
                     ),
                   ),
-                  SliverToBoxAdapter(
-                    child: Center(
-                      child: AnimatedSmoothIndicator(
-                        activeIndex: currentIndex,
-                        count: listUpcommingMoviesPoster.length,
-                        effect: const ExpandingDotsEffect(
-                            activeDotColor: Color(0xffFF8036),
-                            expansionFactor: 2.5,
-                            spacing: 6,
-                            dotHeight: 8,
-                            dotColor: Color(0xff637394),
-                            dotWidth: 8),
-                      ),
-                    ),
-                  ),
+                  // SliverToBoxAdapter(
+                  //   child: Center(
+                  //     child: AnimatedSmoothIndicator(
+                  //       activeIndex: currentIndex,
+                  //       count: listUpcommingMoviesPoster.length,
+                  //       effect: const ExpandingDotsEffect(
+                  //           activeDotColor: Color(0xffFF8036),
+                  //           expansionFactor: 2.5,
+                  //           spacing: 6,
+                  //           dotHeight: 8,
+                  //           dotColor: Color(0xff637394),
+                  //           dotWidth: 8),
+                  //     ),
+                  //   ),
+                  // ),
                   const SliverToBoxAdapter(
                     child: Padding(
                       padding: EdgeInsets.all(16),
@@ -108,7 +135,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           ),
                         );
                       } else if (state is MoviesLoaded) {
-                        final movies = state.movies;
+                        final movies = state.nowPlayingMovies;
 
                         return BlocBuilder<GlobalInfoBloc, GlobalInfoState>(
                           builder: (context, state) {

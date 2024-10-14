@@ -27,9 +27,10 @@ class NowPlayingMoviesScreen extends StatelessWidget {
             return const CircularProgressIndicator();
           } else if (state is MoviesLoaded) {
             return ListView.builder(
-              itemCount: state.movies.length,
+              itemCount: state.nowPlayingMovies.length,
               itemBuilder: (context, index) {
-                return ListTile(title: Text(state.movies[index].title));
+                return ListTile(
+                    title: Text(state.nowPlayingMovies[index].title));
               },
             );
           } else if (state is MoviesError) {
