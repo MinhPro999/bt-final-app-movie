@@ -13,6 +13,7 @@ import 'package:flutter_learning/lesson_30_firestore/features/home/data/reposito
 import 'package:flutter_learning/lesson_30_firestore/features/home/domain/usecases/global_info_usecases.dart';
 import 'package:flutter_learning/lesson_30_firestore/features/home/presentation/home_screen.dart';
 import 'package:flutter_learning/lesson_30_firestore/features/home/presentation/logic_holders/global_info_bloc/global_info_bloc.dart';
+import 'package:flutter_learning/lesson_30_firestore/features/profile/presentation/profile_screen.dart';
 import 'package:flutter_learning/lesson_30_firestore/root_page.dart';
 
 void main(List<String> args) async {
@@ -45,6 +46,8 @@ class MyApp extends StatelessWidget {
             case 'forgot-password':
               return MaterialPageRoute(
                   builder: (_) => const ForgotPasswordScreen());
+            case 'profile':
+              return MaterialPageRoute(builder: (_) => const ProfileScreen());
             default:
               return MaterialPageRoute(builder: (_) => const NotFoundPage());
           }

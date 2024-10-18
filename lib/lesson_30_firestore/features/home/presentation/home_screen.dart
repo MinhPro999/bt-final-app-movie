@@ -1,5 +1,4 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_learning/lesson_30_firestore/core/apis/dio_client.dart';
@@ -13,7 +12,6 @@ import 'package:flutter_learning/lesson_30_firestore/features/home/presentation/
 import 'package:flutter_learning/lesson_30_firestore/features/home/presentation/widgets/header_section.dart';
 import 'package:flutter_learning/lesson_30_firestore/features/home/presentation/widgets/movie_item.dart';
 import 'package:flutter_learning/lesson_30_firestore/features/home/presentation/widgets/upcoming_section.dart';
-import 'package:google_sign_in/google_sign_in.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -35,9 +33,11 @@ class _HomeScreenState extends State<HomeScreen> {
           children: [
             HeaderSection(
               onPressed: () async {
-                await GoogleSignIn()
-                    .signOut(); // Đảm bảo rằng đăng xuất Google trước tiên
-                await FirebaseAuth.instance.signOut();
+                // await GoogleSignIn()
+                //     .signOut(); // Đảm bảo rằng đăng xuất Google trước tiên
+                // await FirebaseAuth.instance.signOut();
+
+                Navigator.of(context).pushNamed('profile');
               },
             ),
             Expanded(

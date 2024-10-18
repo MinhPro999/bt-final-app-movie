@@ -41,13 +41,28 @@ class $AssetsImagesGen {
   AssetGenImage get productLogo =>
       const AssetGenImage('assets/images/product_logo.png');
 
+  /// File path: assets/images/vietnam.png
+  AssetGenImage get vietnam => const AssetGenImage('assets/images/vietnam.png');
+
   /// List of all assets
-  List<AssetGenImage> get values =>
-      [bgNight, bgLight, dog, fbIc, ggIc, languageIc, locationIc, productLogo];
+  List<AssetGenImage> get values => [
+        bgNight,
+        bgLight,
+        dog,
+        fbIc,
+        ggIc,
+        languageIc,
+        locationIc,
+        productLogo,
+        vietnam
+      ];
 }
 
 class $AssetsSvgGen {
   const $AssetsSvgGen();
+
+  /// File path: assets/svg/Vector.svg
+  String get vector => 'assets/svg/Vector.svg';
 
   /// Directory path: assets/svg/WiFi Signal
   $AssetsSvgWiFiSignalGen get wiFiSignal => const $AssetsSvgWiFiSignalGen();
@@ -73,9 +88,25 @@ class $AssetsSvgGen {
   /// File path: assets/svg/technical.svg
   String get technical => 'assets/svg/technical.svg';
 
+  /// File path: assets/svg/us-flag.svg
+  String get usFlag => 'assets/svg/us-flag.svg';
+
+  /// File path: assets/svg/vietnam-flag.svg
+  String get vietnamFlag => 'assets/svg/vietnam-flag.svg';
+
   /// List of all assets
-  List<String> get values =>
-      [appIcon, calendar, dayIcon, nightIcon, option, sort, technical];
+  List<String> get values => [
+        vector,
+        appIcon,
+        calendar,
+        dayIcon,
+        nightIcon,
+        option,
+        sort,
+        technical,
+        usFlag,
+        vietnamFlag
+      ];
 }
 
 class $AssetsSvgWiFiSignalGen {

@@ -40,21 +40,21 @@ class MyTheme {
             fontSize: 20,
             fontWeight: FontWeight.bold), // Cho tiêu đề
       ),
-      inputDecorationTheme: const InputDecorationTheme(
-          filled: true,
-          fillColor: Colors.transparent,
-          enabledBorder: UnderlineInputBorder(
-              borderSide: BorderSide(
-                  color: Color(
-                    0xffFF8036,
-                  ),
-                  width: 2)),
-          focusedBorder: UnderlineInputBorder(
-              borderSide: BorderSide(color: Color(0xffFF8036), width: 2)),
-          labelStyle: TextStyle(color: Colors.white70),
-          hintStyle: TextStyle(color: Colors.white54),
-          suffixIconColor: Color(0xff637394),
-          prefixIconColor: Color(0xffFF8036)),
+      // inputDecorationTheme: const InputDecorationTheme(
+      //     filled: true,
+      //     fillColor: Colors.transparent,
+      //     enabledBorder: UnderlineInputBorder(
+      //         borderSide: BorderSide(
+      //             color: Color(
+      //               0xffFF8036,
+      //             ),
+      //             width: 2)),
+      //     focusedBorder: UnderlineInputBorder(
+      //         borderSide: BorderSide(color: Color(0xffFF8036), width: 2)),
+      //     labelStyle: TextStyle(color: Colors.white70),
+      //     hintStyle: TextStyle(color: Colors.white54),
+      //     suffixIconColor: Color(0xff637394),
+      //     prefixIconColor: Color(0xffFF8036)),
 
       tabBarTheme: TabBarTheme(
         indicatorColor: const Color(0xffFF8036),
