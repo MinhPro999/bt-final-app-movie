@@ -4,7 +4,7 @@ import 'package:flutter_learning/lesson_30_firestore/features/profile/data/model
 
 abstract class AccountFirestoreDataSource {
   Future<AccountModel?> getAccountData(String userId);
-  Future<void> setAccountData(String userId, AccountModel account);
+  Future<void> updateOrCreateAccountData(String userId, AccountModel account);
 }
 
 class AccountFirestoreDataSourceImpl implements AccountFirestoreDataSource {
@@ -22,7 +22,8 @@ class AccountFirestoreDataSourceImpl implements AccountFirestoreDataSource {
   }
 
   @override
-  Future<void> setAccountData(String userId, AccountModel account) async {
+  Future<void> updateOrCreateAccountData(
+      String userId, AccountModel account) async {
     final db = FirebaseFirestore.instance;
     //! Lấy tham chiếu tới document bằng userId
     DocumentReference userDocRef = db.collection('accounts').doc(userId);
