@@ -13,7 +13,6 @@ class HeaderSection extends StatelessWidget {
   Widget build(BuildContext context) {
     //! viewPadding.top: lấy ra kích thước Height của Status Bar
     final statusBarHeight = MediaQuery.of(context).viewPadding.top;
-    print("height của status bar là: $statusBarHeight");
     return Container(
       padding:
           EdgeInsets.only(top: statusBarHeight, bottom: 8, left: 16, right: 16),
@@ -42,7 +41,12 @@ class HeaderSection extends StatelessWidget {
                   width: 8,
                 ),
                 const Spacer(),
-                IconButton(onPressed: onPressed, icon: const Icon(Icons.logout))
+                IconButton(
+                    onPressed: onPressed,
+                    icon: const Icon(
+                      Icons.person_pin_rounded,
+                      size: 30,
+                    ))
               ],
             ),
           )

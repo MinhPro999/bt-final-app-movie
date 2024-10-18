@@ -16,12 +16,6 @@ class ProfileScreen extends StatelessWidget {
           "Profile Screen",
           style: TextStyle(color: Colors.white),
         ),
-        leading: IconButton(
-            onPressed: () {},
-            icon: const Icon(
-              Icons.arrow_back_ios,
-              color: Colors.white,
-            )),
         actions: [
           IconButton(
               onPressed: () {},
