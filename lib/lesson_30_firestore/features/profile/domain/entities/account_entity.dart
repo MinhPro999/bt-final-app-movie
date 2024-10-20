@@ -16,4 +16,24 @@ class AccountEntity {
     required this.email,
     required this.gender,
   });
+
+  AccountEntity copyWith({
+    String? userId,
+    String? avatarUrl,
+    String? fullName,
+    DateTime? dob,
+    String? phoneNumber,
+    String? email,
+    int? gender,
+  }) {
+    return AccountEntity(
+      userId: userId ?? this.userId,
+      avatarUrl: avatarUrl ?? this.avatarUrl,
+      fullName: fullName ?? this.fullName,
+      dob: dob ?? this.dob,
+      phoneNumber: phoneNumber ?? this.phoneNumber,
+      email: email ?? this.email,
+      gender: gender ?? this.gender,
+    );
+  }
 }
