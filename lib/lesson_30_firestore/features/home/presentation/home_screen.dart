@@ -2,7 +2,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_learning/lesson_30_firestore/core/apis/dio_client.dart';
-import 'package:flutter_learning/lesson_30_firestore/core/services/logger_service.dart';
 import 'package:flutter_learning/lesson_30_firestore/core/utils/convert_util.dart';
 import 'package:flutter_learning/lesson_30_firestore/features/home/data/datasources/movie_remote_data_source.dart';
 import 'package:flutter_learning/lesson_30_firestore/features/home/data/repositories/movie_repository_impl.dart';
@@ -59,7 +58,6 @@ class _HomeScreenState extends State<HomeScreen> {
                                           .getPosterSizeText('w342') +
                                       e.posterPath)
                                   .toList();
-                              printI("List poster: $listPosterImage");
                               return UpcomingSection(
                                 listUpcommingMoviesPoster: listPosterImage,
                                 setStateFunc: (index) {

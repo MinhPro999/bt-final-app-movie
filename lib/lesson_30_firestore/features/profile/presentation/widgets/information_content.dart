@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_learning/lesson_30_firestore/features/profile/presentation/custom_title_and_content_in_item.dart';
 import 'package:flutter_learning/lesson_30_firestore/features/profile/presentation/information_section_widgets/date_picker_display.dart';
 import 'package:flutter_learning/lesson_30_firestore/features/profile/presentation/information_section_widgets/email_input.dart';
 import 'package:flutter_learning/lesson_30_firestore/features/profile/presentation/information_section_widgets/fullname_input.dart';
 import 'package:flutter_learning/lesson_30_firestore/features/profile/presentation/information_section_widgets/phone_num_input.dart';
 import 'package:flutter_learning/lesson_30_firestore/features/profile/presentation/information_section_widgets/radio_gender_item.dart';
+import 'package:flutter_learning/lesson_30_firestore/features/profile/presentation/logic_holders/bloc/account_info_bloc.dart';
 
 class InformationContent extends StatefulWidget {
   const InformationContent({
@@ -16,11 +18,9 @@ class InformationContent extends StatefulWidget {
 }
 
 class _InformationContentState extends State<InformationContent> {
-  DateTime? selectedDate;
   late TextEditingController phoneNumController;
   late TextEditingController emailController;
   late TextEditingController fullnameController;
-  String selectedGender = "Male";
 
   @override
   Widget build(BuildContext context) {
@@ -32,23 +32,33 @@ class _InformationContentState extends State<InformationContent> {
         const SizedBox(
           height: 8,
         ),
-        CustomTitleAndContentInItem(
-            title: "Date of birth",
-            content: DatePickerDisplay(
-              selectedDate: selectedDate,
-              onTap: () async {
-                final result = await showDatePicker(
-                    context: context,
-                    currentDate: selectedDate,
-                    firstDate: DateTime(1900),
-                    lastDate: DateTime(2024));
-                if (result != null) {
-                  setState(() {
-                    selectedDate = result;
-                  });
-                }
-              },
-            )),
+        BlocSelector<AccountInfoBloc, AccountInfoState, DateTime?>(
+          selector: (state) {
+            final dobFromFirestore = state.accountDataFromFirestore?.dob;
+            final dobFromLocal = state.updatedLocalAccountData.dob;
+            return dobFromLocal ?? dobFromFirestore;
+          },
+          builder: (context, value) {
+            return CustomTitleAndContentInItem(
+                title: "Date of birth",
+                content: DatePickerDisplay(
+                  selectedDate: value,
+                  onTap: () async {
+                    final result = await showDatePicker(
+                        context: context,
+                        currentDate: value,
+                        firstDate: DateTime(1900),
+                        lastDate: DateTime(2024));
+                    if (result != null) {
+                      if (context.mounted) {
+                        BlocProvider.of<AccountInfoBloc>(context)
+                            .add(UpdateDob(newDob: result));
+                      }
+                    }
+                  },
+                ));
+          },
+        ),
         const SizedBox(
           height: 8,
         ),
@@ -66,42 +76,49 @@ class _InformationContentState extends State<InformationContent> {
         ),
         CustomTitleAndContentInItem(
             title: "Gender",
-            content: Row(
-              children: [
-                RadioGenderItem(
-                  radioValue: "Male",
-                  selectedValue: selectedGender,
-                  onTap: () {
-                    setState(() {
-                      selectedGender = "Male";
-                    });
-                  },
-                ),
-                const SizedBox(
-                  width: 4,
-                ),
-                RadioGenderItem(
-                  radioValue: "Female",
-                  selectedValue: selectedGender,
-                  onTap: () {
-                    setState(() {
-                      selectedGender = "Female";
-                    });
-                  },
-                ),
-                const SizedBox(
-                  width: 4,
-                ),
-                RadioGenderItem(
-                  radioValue: "Other",
-                  selectedValue: selectedGender,
-                  onTap: () {
-                    setState(() {
-                      selectedGender = "Other";
-                    });
-                  },
-                ),
-              ],
+            content: BlocSelector<AccountInfoBloc, AccountInfoState, int?>(
+              selector: (state) {
+                final genderFromFirestore =
+                    state.accountDataFromFirestore?.gender;
+                final genderFromLocal = state.updatedLocalAccountData.gender;
+                return genderFromLocal ?? genderFromFirestore;
+              },
+              builder: (context, selectedGender) {
+                return Row(
+                  children: [
+                    RadioGenderItem(
+                      radioValue: 1,
+                      selectedValue: selectedGender,
+                      onTap: () {
+                        BlocProvider.of<AccountInfoBloc>(context)
+                            .add(UpdateGender(newGender: 1));
+                      },
+                    ),
+                    const SizedBox(
+                      width: 4,
+                    ),
+                    RadioGenderItem(
+                      radioValue: 2,
+                      selectedValue: selectedGender,
+                      onTap: () {
+                        BlocProvider.of<AccountInfoBloc>(context)
+                            .add(UpdateGender(newGender: 2));
+                      },
+                    ),
+                    const SizedBox(
+                      width: 4,
+                    ),
+                    RadioGenderItem(
+                      radioValue: 3,
+                      selectedValue: selectedGender,
+                      onTap: () {
+                        BlocProvider.of<AccountInfoBloc>(context)
+                            .add(UpdateGender(newGender: 3));
+                      },
+                    ),
+                  ],
+                );
+              },
             )),
         const SizedBox(
           height: 8,
@@ -136,5 +153,20 @@ class _InformationContentState extends State<InformationContent> {
     emailController = TextEditingController();
     fullnameController = TextEditingController();
     super.initState();
+  }
+}
+
+extension GenderExtension on int? {
+  String toGenderString() {
+    switch (this) {
+      case 1:
+        return "Male";
+      case 2:
+        return "Female";
+      case 3:
+        return "Other";
+      default:
+        return "Unknown";
+    }
   }
 }
