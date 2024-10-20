@@ -2,9 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_learning/lesson_30_firestore/features/profile/presentation/custom_title_and_content_in_item.dart';
 import 'package:flutter_learning/lesson_30_firestore/features/profile/presentation/information_section_widgets/date_picker_display.dart';
-import 'package:flutter_learning/lesson_30_firestore/features/profile/presentation/information_section_widgets/email_input.dart';
 import 'package:flutter_learning/lesson_30_firestore/features/profile/presentation/information_section_widgets/fullname_input.dart';
-import 'package:flutter_learning/lesson_30_firestore/features/profile/presentation/information_section_widgets/phone_num_input.dart';
 import 'package:flutter_learning/lesson_30_firestore/features/profile/presentation/information_section_widgets/radio_gender_item.dart';
 import 'package:flutter_learning/lesson_30_firestore/features/profile/presentation/logic_holders/bloc/account_info_bloc.dart';
 
@@ -24,11 +22,30 @@ class _InformationContentState extends State<InformationContent> {
 
   @override
   Widget build(BuildContext context) {
+    final canUpdate =
+        BlocProvider.of<AccountInfoBloc>(context, listen: true).canUpdate;
     return Column(
       children: [
-        CustomTitleAndContentInItem(
-            title: "Fullname",
-            content: FullnameInput(fullnameController: fullnameController)),
+        BlocSelector<AccountInfoBloc, AccountInfoState, String?>(
+          selector: (state) {
+            final fullnameFromFirestore =
+                state.accountDataFromFirestore?.fullName;
+            final fullnameFromLocal = state.updatedLocalAccountData.fullName;
+            return fullnameFromFirestore ?? fullnameFromLocal;
+          },
+          builder: (context, selectedValue) {
+            return CustomTitleAndContentInItem(
+                title: "Fullname",
+                content: TextInput(
+                  currentValue: selectedValue,
+                  onChanged: (newValue) {
+                    BlocProvider.of<AccountInfoBloc>(context)
+                        .add(UpdateFullname(newName: newValue));
+                  },
+                  hintText: "Nhập họ và tên",
+                ));
+          },
+        ),
         const SizedBox(
           height: 8,
         ),
@@ -62,15 +79,54 @@ class _InformationContentState extends State<InformationContent> {
         const SizedBox(
           height: 8,
         ),
-        CustomTitleAndContentInItem(
-            title: "Phone Number",
-            content: PhoneNumInput(phoneNumController: phoneNumController)),
+        BlocSelector<AccountInfoBloc, AccountInfoState, String?>(
+          selector: (state) {
+            final phoneNumFromFirestore =
+                state.accountDataFromFirestore?.phoneNumber;
+            final phoneNumFromLocal = state.updatedLocalAccountData.phoneNumber;
+            return phoneNumFromFirestore ?? phoneNumFromLocal;
+          },
+          builder: (context, selectedValue) {
+            return CustomTitleAndContentInItem(
+                title: "Phone Number",
+                content: TextInput(
+                  currentValue: selectedValue,
+                  onChanged: (newValue) {
+                    BlocProvider.of<AccountInfoBloc>(context)
+                        .add(UpdatePhoneNum(newPhoneNum: newValue));
+                  },
+                  hintText: "Nhập số điện thoại",
+                ));
+          },
+        ),
+        // CustomTitleAndContentInItem(
+        //     title: "Phone Number",
+        //     content: PhoneNumInput(phoneNumController: phoneNumController)),
         const SizedBox(
           height: 8,
         ),
-        CustomTitleAndContentInItem(
-            title: "Email",
-            content: EmailInput(emailController: emailController)),
+        BlocSelector<AccountInfoBloc, AccountInfoState, String?>(
+          selector: (state) {
+            final emailFromFirestore = state.accountDataFromFirestore?.email;
+            final emailFromLocal = state.updatedLocalAccountData.email;
+            return emailFromFirestore ?? emailFromLocal;
+          },
+          builder: (context, selectedValue) {
+            return CustomTitleAndContentInItem(
+                title: "Email",
+                content: TextInput(
+                  currentValue: selectedValue,
+                  onChanged: (newValue) {
+                    BlocProvider.of<AccountInfoBloc>(context)
+                        .add(UpdateEmail(newEmail: newValue));
+                  },
+                  hintText: "Nhập email",
+                ));
+          },
+        ),
+        // CustomTitleAndContentInItem(
+        //     title: "Email",
+        //     content: EmailInput(emailController: emailController)),
         const SizedBox(
           height: 8,
         ),
@@ -129,8 +185,15 @@ class _InformationContentState extends State<InformationContent> {
         Padding(
           padding: const EdgeInsets.symmetric(vertical: 10),
           child: ElevatedButton(
-            onPressed: () {},
+            onPressed: canUpdate
+                ? () {
+                    FocusScope.of(context).unfocus();
+                    BlocProvider.of<AccountInfoBloc>(context).add(SaveInfo());
+                  }
+                : null,
             style: ButtonStyle(
+                backgroundColor:
+                    canUpdate ? null : WidgetStateProperty.all(Colors.grey),
                 padding: WidgetStateProperty.all(
                     const EdgeInsets.symmetric(vertical: 8, horizontal: 24))),
             child: const Text("SAVE"),
