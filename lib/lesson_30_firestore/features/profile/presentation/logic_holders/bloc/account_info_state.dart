@@ -37,8 +37,8 @@ class AccountInfoState extends Equatable {
           accountDataFromFirestore ?? this.accountDataFromFirestore,
       updatedLocalAccountData:
           updatedLocalAccountData ?? this.updatedLocalAccountData,
-      successMsg: successMsg ?? this.successMsg,
-      errorMsg: errorMsg ?? this.errorMsg,
+      successMsg: successMsg,
+      errorMsg: errorMsg,
     );
   }
 }
