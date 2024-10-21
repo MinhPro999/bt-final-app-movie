@@ -1,16 +1,21 @@
+import 'dart:io';
+
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter_learning/lesson_30_firestore/core/enums/status_state.dart';
 import 'package:flutter_learning/lesson_30_firestore/core/services/logger_service.dart';
 import 'package:flutter_learning/lesson_30_firestore/features/profile/domain/entities/account_entity.dart';
 import 'package:flutter_learning/lesson_30_firestore/features/profile/domain/repositories/account_repository.dart';
+import 'package:image_picker/image_picker.dart';
 
 part 'account_info_event.dart';
 part 'account_info_state.dart';
 
 class AccountInfoBloc extends Bloc<AccountInfoEvent, AccountInfoState> {
   final AccountRepository repository;
+  final ImagePicker _picker = ImagePicker();
   AccountInfoBloc(this.repository) : super(const AccountInfoState()) {
     on<UpdateDob>((event, emit) {
       final localAccountInfo = state.updatedLocalAccountData;
@@ -66,6 +71,17 @@ class AccountInfoBloc extends Bloc<AccountInfoEvent, AccountInfoState> {
         emit(state.copyWith(status: StatusState.idle));
       }
     });
+    on<PickImage>((event, emit) async {
+      final pickedFile = await _picker.pickImage(source: ImageSource.gallery);
+
+      if (pickedFile != null) {
+        setState(() {
+          _imageFile = File(pickedFile.path);
+        });
+        // Upload ảnh lên Firebase Storage
+        await uploadImageToFirebase(_imageFile!);
+      }
+    });
   }
 
   bool get canUpdate {
@@ -80,5 +96,25 @@ class AccountInfoBloc extends Bloc<AccountInfoEvent, AccountInfoState> {
         phoneNum != null ||
         email != null ||
         gender != null;
+  }
+
+  Future<void> uploadImageToFirebase(File imageFile) async {
+    try {
+      // Tạo đường dẫn nơi lưu ảnh trong Firebase Storage
+      String fileName = DateTime.now().millisecondsSinceEpoch.toString();
+      Reference storageReference =
+          FirebaseStorage.instance.ref().child('uploads/$fileName');
+
+      // Upload ảnh lên Firebase Storage
+      UploadTask uploadTask = storageReference.putFile(imageFile);
+
+      // Chờ cho quá trình upload hoàn thành
+      await uploadTask.whenComplete(() async {
+        String downloadURL = await storageReference.getDownloadURL();
+        print('Upload complete. Download URL: $downloadURL');
+      });
+    } catch (e) {
+      print('Upload failed: $e');
+    }
   }
 }

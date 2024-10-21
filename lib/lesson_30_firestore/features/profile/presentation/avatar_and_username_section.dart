@@ -11,10 +11,30 @@ class AvatarAndUsernameSection extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        const Icon(
-          Icons.person,
-          size: 100,
-          color: Colors.white,
+        Stack(
+          clipBehavior: Clip.none,
+          children: [
+            Container(
+              width: 100,
+              height: 100,
+              decoration: const BoxDecoration(
+                  shape: BoxShape.circle, color: Colors.amber),
+              clipBehavior: Clip.hardEdge,
+              child: const FlutterLogo(),
+            ),
+            Positioned(
+              bottom: -5,
+              right: 0,
+              child: InkWell(
+                onTap: () {},
+                child: const Icon(
+                  Icons.camera_alt_rounded,
+                  color: Colors.white,
+                  size: 30,
+                ),
+              ),
+            )
+          ],
         ),
         const SizedBox(
           height: 8,
