@@ -16,117 +16,111 @@ class InformationContent extends StatefulWidget {
 }
 
 class _InformationContentState extends State<InformationContent> {
-  late TextEditingController phoneNumController;
-  late TextEditingController emailController;
-  late TextEditingController fullnameController;
-
   @override
   Widget build(BuildContext context) {
     final canUpdate =
         BlocProvider.of<AccountInfoBloc>(context, listen: true).canUpdate;
     return Column(
       children: [
-        BlocSelector<AccountInfoBloc, AccountInfoState, String?>(
-          selector: (state) {
-            final fullnameFromFirestore =
-                state.accountDataFromFirestore?.fullName;
-            final fullnameFromLocal = state.updatedLocalAccountData.fullName;
-            return fullnameFromFirestore ?? fullnameFromLocal;
-          },
-          builder: (context, selectedValue) {
-            return CustomTitleAndContentInItem(
-                title: "Fullname",
-                content: TextInput(
+        CustomTitleAndContentInItem(
+            title: "Fullname",
+            content: BlocSelector<AccountInfoBloc, AccountInfoState, String?>(
+              selector: (state) {
+                final fullnameFromFirestore =
+                    state.accountDataFromFirestore?.fullName;
+                final fullnameFromLocal =
+                    state.updatedLocalAccountData.fullName;
+                return fullnameFromFirestore ?? fullnameFromLocal;
+              },
+              builder: (context, selectedValue) {
+                return TextInput(
                   currentValue: selectedValue,
                   onChanged: (newValue) {
                     BlocProvider.of<AccountInfoBloc>(context)
                         .add(UpdateFullname(newName: newValue));
                   },
                   hintText: "Nhập họ và tên",
-                ));
-          },
-        ),
+                );
+              },
+            )),
         const SizedBox(
           height: 8,
         ),
-        BlocSelector<AccountInfoBloc, AccountInfoState, DateTime?>(
-          selector: (state) {
-            final dobFromFirestore = state.accountDataFromFirestore?.dob;
-            final dobFromLocal = state.updatedLocalAccountData.dob;
-            return dobFromLocal ?? dobFromFirestore;
-          },
-          builder: (context, value) {
-            return CustomTitleAndContentInItem(
-                title: "Date of birth",
-                content: DatePickerDisplay(
-                  selectedDate: value,
-                  onTap: () async {
-                    final result = await showDatePicker(
-                        context: context,
-                        currentDate: value,
-                        firstDate: DateTime(1900),
-                        lastDate: DateTime(2024));
-                    if (result != null) {
-                      if (context.mounted) {
-                        BlocProvider.of<AccountInfoBloc>(context)
-                            .add(UpdateDob(newDob: result));
-                      }
+        CustomTitleAndContentInItem(
+          title: "Date of birth",
+          content: BlocSelector<AccountInfoBloc, AccountInfoState, DateTime?>(
+            selector: (state) {
+              final dobFromFirestore = state.accountDataFromFirestore?.dob;
+              final dobFromLocal = state.updatedLocalAccountData.dob;
+              return dobFromLocal ?? dobFromFirestore;
+            },
+            builder: (context, value) {
+              return DatePickerDisplay(
+                selectedDate: value,
+                onTap: () async {
+                  final result = await showDatePicker(
+                      context: context,
+                      currentDate: value,
+                      firstDate: DateTime(1900),
+                      lastDate: DateTime(2024));
+                  if (result != null) {
+                    if (context.mounted) {
+                      BlocProvider.of<AccountInfoBloc>(context)
+                          .add(UpdateDob(newDob: result));
                     }
-                  },
-                ));
-          },
+                  }
+                },
+              );
+            },
+          ),
         ),
         const SizedBox(
           height: 8,
         ),
-        BlocSelector<AccountInfoBloc, AccountInfoState, String?>(
-          selector: (state) {
-            final phoneNumFromFirestore =
-                state.accountDataFromFirestore?.phoneNumber;
-            final phoneNumFromLocal = state.updatedLocalAccountData.phoneNumber;
-            return phoneNumFromFirestore ?? phoneNumFromLocal;
-          },
-          builder: (context, selectedValue) {
-            return CustomTitleAndContentInItem(
-                title: "Phone Number",
-                content: TextInput(
+        CustomTitleAndContentInItem(
+            title: "Phone Number",
+            content: BlocSelector<AccountInfoBloc, AccountInfoState, String?>(
+              selector: (state) {
+                final phoneNumFromFirestore =
+                    state.accountDataFromFirestore?.phoneNumber;
+                final phoneNumFromLocal =
+                    state.updatedLocalAccountData.phoneNumber;
+                return phoneNumFromFirestore ?? phoneNumFromLocal;
+              },
+              builder: (context, selectedValue) {
+                return TextInput(
                   currentValue: selectedValue,
                   onChanged: (newValue) {
                     BlocProvider.of<AccountInfoBloc>(context)
                         .add(UpdatePhoneNum(newPhoneNum: newValue));
                   },
                   hintText: "Nhập số điện thoại",
-                ));
-          },
-        ),
-        // CustomTitleAndContentInItem(
-        //     title: "Phone Number",
-        //     content: PhoneNumInput(phoneNumController: phoneNumController)),
+                );
+              },
+            )),
         const SizedBox(
           height: 8,
         ),
-        BlocSelector<AccountInfoBloc, AccountInfoState, String?>(
-          selector: (state) {
-            final emailFromFirestore = state.accountDataFromFirestore?.email;
-            final emailFromLocal = state.updatedLocalAccountData.email;
-            return emailFromFirestore ?? emailFromLocal;
-          },
-          builder: (context, selectedValue) {
-            return CustomTitleAndContentInItem(
-                title: "Email",
-                content: TextInput(
+        CustomTitleAndContentInItem(
+            title: "Email",
+            content: BlocSelector<AccountInfoBloc, AccountInfoState, String?>(
+              selector: (state) {
+                final emailFromFirestore =
+                    state.accountDataFromFirestore?.email;
+                final emailFromLocal = state.updatedLocalAccountData.email;
+                return emailFromFirestore ?? emailFromLocal;
+              },
+              builder: (context, selectedValue) {
+                return TextInput(
                   currentValue: selectedValue,
                   onChanged: (newValue) {
                     BlocProvider.of<AccountInfoBloc>(context)
                         .add(UpdateEmail(newEmail: newValue));
                   },
                   hintText: "Nhập email",
-                ));
-          },
-        ),
-        // CustomTitleAndContentInItem(
-        //     title: "Email",
-        //     content: EmailInput(emailController: emailController)),
+                );
+              },
+            )),
         const SizedBox(
           height: 8,
         ),
@@ -205,16 +199,11 @@ class _InformationContentState extends State<InformationContent> {
 
   @override
   void dispose() {
-    phoneNumController.dispose();
-    emailController.dispose();
     super.dispose();
   }
 
   @override
   void initState() {
-    phoneNumController = TextEditingController();
-    emailController = TextEditingController();
-    fullnameController = TextEditingController();
     super.initState();
   }
 }
