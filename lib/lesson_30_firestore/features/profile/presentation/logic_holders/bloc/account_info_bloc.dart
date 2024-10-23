@@ -50,11 +50,20 @@ class AccountInfoBloc extends Bloc<AccountInfoEvent, AccountInfoState> {
       final userId = FirebaseAuth.instance.currentUser?.uid;
       if (userId != null) {
         emit(state.copyWith(status: StatusState.loading));
-        final localAccountInfo = state.updatedLocalAccountData;
+        final localImageFile = state.updatedLocalImageFile;
+        var localAccountInfo = state.updatedLocalAccountData;
+        if (localImageFile != null) {
+          final avatarUrl = await uploadImageToFirebase(
+              userId: userId, imageFile: localImageFile);
+          if (avatarUrl != null) {
+            localAccountInfo = localAccountInfo.copyWith(avatarUrl: avatarUrl);
+          }
+        }
+
         printS("[SaveInfo] Info is ready to save: $localAccountInfo");
         await repository.createOrUpdateAccountData(userId, localAccountInfo);
-        emit(state.copyWith(
-            successMsg: "Lưu file thành công", status: StatusState.idle));
+        emit(state.copyWithoutLocalImageFile(
+            successMsg: "Lưu thông tin thành công", status: StatusState.idle));
         add(FetchAccountInfo());
       }
     });
@@ -75,14 +84,16 @@ class AccountInfoBloc extends Bloc<AccountInfoEvent, AccountInfoState> {
       }
     });
     on<PickImage>((event, emit) async {
-      final pickedFile = await _picker.pickImage(source: ImageSource.gallery);
-
-      if (pickedFile != null) {
-        setState(() {
-          _imageFile = File(pickedFile.path);
-        });
-        // Upload ảnh lên Firebase Storage
-        await uploadImageToFirebase(_imageFile!);
+      try {
+        final pickedFile = await _picker.pickImage(source: ImageSource.gallery);
+        if (pickedFile != null) {
+          emit(state.copyWith(updatedLocalImageFile: File(pickedFile.path)));
+        }
+      } catch (e) {
+        printE("[AccountInfoBloc] - [PickImage] error: $e");
+        emit(state.copyWith(errorMsg: "Đã xảy ra lỗi, ko thể lấy hình ảnh"));
+      } finally {
+        emit(state.copyWith(status: StatusState.idle));
       }
     });
   }
@@ -94,30 +105,31 @@ class AccountInfoBloc extends Bloc<AccountInfoEvent, AccountInfoState> {
     final phoneNum = updatedAccountInfo.phoneNumber;
     final email = updatedAccountInfo.email;
     final gender = updatedAccountInfo.gender;
+    final updatedLocalImageFile = state.updatedLocalImageFile;
     return fullname != null ||
         dob != null ||
         phoneNum != null ||
         email != null ||
-        gender != null;
+        gender != null ||
+        updatedLocalImageFile != null;
   }
 
-  Future<void> uploadImageToFirebase(File imageFile) async {
+  Future<String?> uploadImageToFirebase(
+      {required String userId, required File imageFile}) async {
     try {
       // Tạo đường dẫn nơi lưu ảnh trong Firebase Storage
-      String fileName = DateTime.now().millisecondsSinceEpoch.toString();
       Reference storageReference =
-          FirebaseStorage.instance.ref().child('uploads/$fileName');
+          FirebaseStorage.instance.ref().child('uploads/$userId');
 
       // Upload ảnh lên Firebase Storage
-      UploadTask uploadTask = storageReference.putFile(imageFile);
-
+      await storageReference.putFile(imageFile);
       // Chờ cho quá trình upload hoàn thành
-      await uploadTask.whenComplete(() async {
-        String downloadURL = await storageReference.getDownloadURL();
-        print('Upload complete. Download URL: $downloadURL');
-      });
+      // Lấy download url để hiển thị hình ảnh
+      String downloadURL = await storageReference.getDownloadURL();
+      return downloadURL;
     } catch (e) {
-      print('Upload failed: $e');
+      printE('Upload failed: $e');
+      return null;
     }
   }
 }

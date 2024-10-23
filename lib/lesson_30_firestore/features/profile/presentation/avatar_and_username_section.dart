@@ -14,19 +14,41 @@ class AvatarAndUsernameSection extends StatelessWidget {
         Stack(
           clipBehavior: Clip.none,
           children: [
-            Container(
-              width: 100,
-              height: 100,
-              decoration: const BoxDecoration(
-                  shape: BoxShape.circle, color: Colors.amber),
-              clipBehavior: Clip.hardEdge,
-              child: const FlutterLogo(),
+            BlocBuilder<AccountInfoBloc, AccountInfoState>(
+              builder: (context, state) {
+                final avatarUrl = state.accountDataFromFirestore?.avatarUrl;
+                final localImageFile = state.updatedLocalImageFile;
+                return Container(
+                  width: 100,
+                  height: 100,
+                  decoration: const BoxDecoration(
+                      shape: BoxShape.circle, color: Colors.amber),
+                  clipBehavior: Clip.hardEdge,
+                  child: () {
+                    if (localImageFile != null) {
+                      return Image.file(
+                        localImageFile,
+                        fit: BoxFit.cover,
+                      );
+                    } else if (avatarUrl != null) {
+                      return Image.network(
+                        avatarUrl,
+                        fit: BoxFit.cover,
+                      );
+                    } else {
+                      return const FlutterLogo();
+                    }
+                  }(),
+                );
+              },
             ),
             Positioned(
               bottom: -5,
               right: 0,
               child: InkWell(
-                onTap: () {},
+                onTap: () {
+                  context.read<AccountInfoBloc>().add(PickImage());
+                },
                 child: const Icon(
                   Icons.camera_alt_rounded,
                   color: Colors.white,

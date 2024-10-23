@@ -7,12 +7,14 @@ class AccountInfoState extends Equatable {
   final AccountEntity updatedLocalAccountData;
   final String? successMsg;
   final String? errorMsg;
+  final File? updatedLocalImageFile;
   const AccountInfoState({
     this.status = StatusState.idle,
     this.accountDataFromFirestore,
     this.updatedLocalAccountData = const AccountEntity(),
     this.successMsg,
     this.errorMsg,
+    this.updatedLocalImageFile,
   });
 
   @override
@@ -22,6 +24,7 @@ class AccountInfoState extends Equatable {
         updatedLocalAccountData,
         successMsg,
         errorMsg,
+        updatedLocalImageFile,
       ];
 
   AccountInfoState copyWith({
@@ -30,6 +33,7 @@ class AccountInfoState extends Equatable {
     AccountEntity? updatedLocalAccountData,
     String? successMsg,
     String? errorMsg,
+    File? updatedLocalImageFile,
   }) {
     return AccountInfoState(
       status: status ?? this.status,
@@ -39,6 +43,28 @@ class AccountInfoState extends Equatable {
           updatedLocalAccountData ?? this.updatedLocalAccountData,
       successMsg: successMsg,
       errorMsg: errorMsg,
+      updatedLocalImageFile:
+          updatedLocalImageFile ?? this.updatedLocalImageFile,
+    );
+  }
+
+  AccountInfoState copyWithoutLocalImageFile({
+    StatusState? status,
+    AccountEntity? accountDataFromFirestore,
+    AccountEntity? updatedLocalAccountData,
+    String? successMsg,
+    String? errorMsg,
+    File? updatedLocalImageFile,
+  }) {
+    return AccountInfoState(
+      status: status ?? this.status,
+      accountDataFromFirestore:
+          accountDataFromFirestore ?? this.accountDataFromFirestore,
+      updatedLocalAccountData:
+          updatedLocalAccountData ?? this.updatedLocalAccountData,
+      successMsg: successMsg,
+      errorMsg: errorMsg,
+      updatedLocalImageFile: updatedLocalImageFile,
     );
   }
 }

@@ -141,7 +141,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                     crossAxisCount: 2,
                                     crossAxisSpacing: 16,
                                     mainAxisSpacing: 16,
-                                    childAspectRatio: 163 / 282,
+                                    childAspectRatio: 163 / 320,
                                   ),
                                   itemBuilder: (_, index) {
                                     final filteredGenreList =

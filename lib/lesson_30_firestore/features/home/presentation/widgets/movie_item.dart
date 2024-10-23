@@ -42,6 +42,7 @@ class MovieItem extends StatelessWidget {
             fontSize: 16,
             color: Colors.white,
           ),
+          maxLines: 2,
         ),
         const SizedBox(
           height: 4,
