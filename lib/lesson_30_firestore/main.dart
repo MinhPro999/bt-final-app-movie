@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_learning/firebase_options.dart';
+import 'package:flutter_learning/l10n/generated/app_localizations.dart';
 import 'package:flutter_learning/lesson_19/navigator_demo/screens/not_found_page.dart';
 import 'package:flutter_learning/lesson_22_23/forgot_password/forgot_password_screen.dart';
 import 'package:flutter_learning/lesson_30_firestore/core/services/injection_container.dart';
@@ -39,24 +40,44 @@ class MyApp extends StatelessWidget {
           //             sharedPreferences: sharedPreferences))),
           )
         ..add(GetGlobalInfo()),
-      child: MaterialApp(
-        theme: MyTheme.darkTheme(),
-        onGenerateRoute: (settings) {
-          switch (settings.name) {
-            case '/':
-              return MaterialPageRoute(builder: (_) => const LoginScreen());
-            case 'home':
-              return MaterialPageRoute(builder: (_) => const HomeScreen());
-            case 'forgot-password':
-              return MaterialPageRoute(
-                  builder: (_) => const ForgotPasswordScreen());
-            case 'profile':
-              return MaterialPageRoute(builder: (_) => const ProfileScreen());
-            default:
-              return MaterialPageRoute(builder: (_) => const NotFoundPage());
-          }
+      child: BlocBuilder<GlobalInfoBloc, GlobalInfoState>(
+        builder: (context, state) {
+          return MaterialApp(
+            theme: MyTheme.darkTheme(),
+            //! chỉ định Ngôn ngữ cho app
+            //? Dùng cho TH hệ thống đã lưu lại ngôn ngữ mà user đã chọn để sử dụng trong app
+            locale: state.currentLocale,
+            localizationsDelegates: AppLocalizations.localizationsDelegates,
+            supportedLocales: AppLocalizations.supportedLocales,
+            localeResolutionCallback: (deviceLocale, supportedLocales) {
+              for (var supportedLocale in supportedLocales) {
+                if (supportedLocale.languageCode ==
+                    deviceLocale?.languageCode) {
+                  return supportedLocale;
+                }
+              }
+              return supportedLocales.first;
+            },
+            onGenerateRoute: (settings) {
+              switch (settings.name) {
+                case '/':
+                  return MaterialPageRoute(builder: (_) => const LoginScreen());
+                case 'home':
+                  return MaterialPageRoute(builder: (_) => const HomeScreen());
+                case 'forgot-password':
+                  return MaterialPageRoute(
+                      builder: (_) => const ForgotPasswordScreen());
+                case 'profile':
+                  return MaterialPageRoute(
+                      builder: (_) => const ProfileScreen());
+                default:
+                  return MaterialPageRoute(
+                      builder: (_) => const NotFoundPage());
+              }
+            },
+            home: const RootPage(),
+          );
         },
-        home: const RootPage(),
       ),
     );
   }

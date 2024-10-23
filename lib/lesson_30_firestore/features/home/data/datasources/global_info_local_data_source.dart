@@ -3,7 +3,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 abstract class GlobalInfoLocalDatasource {
   Future<String?> getLangCode();
-  Future<bool?> setSavedLocale(String langCode);
+  Future<bool> setSavedLocale(String langCode);
 }
 
 class GlobalInfoLocalDataSourceImpl implements GlobalInfoLocalDatasource {
@@ -17,7 +17,7 @@ class GlobalInfoLocalDataSourceImpl implements GlobalInfoLocalDatasource {
   }
 
   @override
-  Future<bool?> setSavedLocale(String langCode) {
+  Future<bool> setSavedLocale(String langCode) {
     return sharedPreferences.setString('SAVED_LANGUAGE', langCode);
   }
 }

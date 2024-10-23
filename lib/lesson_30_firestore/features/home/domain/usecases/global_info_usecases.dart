@@ -24,4 +24,8 @@ class GlobalInfoUsecases {
   Future<Locale?> getLocale() {
     return globalRepository.getLocale();
   }
+
+  Future<bool> setSavedLangCode(String langCode) {
+    return globalRepository.setSavedLangCode(langCode);
+  }
 }

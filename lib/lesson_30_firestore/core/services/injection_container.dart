@@ -18,11 +18,11 @@ Future<void> initDI() async {
   getIt.registerLazySingleton<SharedPreferences>(() => sharedPreferences);
 
   //! Dio Client
-  getIt.registerLazySingleton<DioClient>(() => DioClient());
+  getIt.registerSingleton<DioClient>(DioClient());
 
   //! Data Source
   getIt.registerLazySingleton<MovieRemoteDataSource>(
-      () => MovieRemoteDataSourceImpl(dio: getIt()));
+      () => MovieRemoteDataSourceImpl(dio: getIt<DioClient>().dio));
   getIt.registerLazySingleton<GlobalInfoLocalDatasource>(
       () => GlobalInfoLocalDataSourceImpl(sharedPreferences: getIt()));
 
@@ -33,7 +33,7 @@ Future<void> initDI() async {
       () => GlobalRepositoryImpl(localDatasource: getIt()));
 
   //! Use cases
-  getIt.registerLazySingleton<GlobalInfoUsecases>(
-      () => GlobalInfoUsecases(repository: getIt(), globalRepository: getIt()));
-  getIt.registerLazySingleton<GetMovies>(() => GetMovies(getIt()));
+  getIt.registerSingleton<GlobalInfoUsecases>(
+      GlobalInfoUsecases(repository: getIt(), globalRepository: getIt()));
+  getIt.registerSingleton<GetMovies>(GetMovies(getIt()));
 }

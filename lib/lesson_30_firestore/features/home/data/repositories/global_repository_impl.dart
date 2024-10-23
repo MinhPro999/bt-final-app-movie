@@ -17,4 +17,9 @@ class GlobalRepositoryImpl implements GlobalRepository {
     }
     return null;
   }
+
+  @override
+  Future<bool> setSavedLangCode(String langCode) {
+    return localDatasource.setSavedLocale(langCode);
+  }
 }

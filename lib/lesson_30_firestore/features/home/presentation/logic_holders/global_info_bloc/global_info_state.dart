@@ -23,19 +23,28 @@ part of 'global_info_bloc.dart';
 
 // abstract class GlobalInfoState {}
 
-class GlobalInfoState {
+class GlobalInfoState extends Equatable {
   final StatusState status;
   final List<Genre>? genreList;
   final ImageConfigInfo? imageConfigInfo;
   final Locale? currentLocale;
   final String? errMsg;
-  GlobalInfoState({
+  const GlobalInfoState({
     this.genreList,
     this.imageConfigInfo,
     this.errMsg,
     this.currentLocale,
     this.status = StatusState.idle,
   });
+
+  @override
+  List<Object?> get props => [
+        status,
+        genreList,
+        imageConfigInfo,
+        errMsg,
+        currentLocale,
+      ];
 
   GlobalInfoState copyWith({
     StatusState? status,
