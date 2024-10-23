@@ -49,9 +49,12 @@ class AccountInfoBloc extends Bloc<AccountInfoEvent, AccountInfoState> {
     on<SaveInfo>((event, emit) async {
       final userId = FirebaseAuth.instance.currentUser?.uid;
       if (userId != null) {
+        emit(state.copyWith(status: StatusState.loading));
         final localAccountInfo = state.updatedLocalAccountData;
         printS("[SaveInfo] Info is ready to save: $localAccountInfo");
         await repository.createOrUpdateAccountData(userId, localAccountInfo);
+        emit(state.copyWith(
+            successMsg: "Lưu file thành công", status: StatusState.idle));
         add(FetchAccountInfo());
       }
     });

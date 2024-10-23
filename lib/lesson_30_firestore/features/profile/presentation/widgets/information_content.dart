@@ -35,6 +35,7 @@ class _InformationContentState extends State<InformationContent> {
               builder: (context, selectedValue) {
                 return TextInput(
                   currentValue: selectedValue,
+                  keyboardType: TextInputType.text,
                   onChanged: (newValue) {
                     BlocProvider.of<AccountInfoBloc>(context)
                         .add(UpdateFullname(newName: newValue));
@@ -90,6 +91,7 @@ class _InformationContentState extends State<InformationContent> {
               builder: (context, selectedValue) {
                 return TextInput(
                   currentValue: selectedValue,
+                  keyboardType: TextInputType.phone,
                   onChanged: (newValue) {
                     BlocProvider.of<AccountInfoBloc>(context)
                         .add(UpdatePhoneNum(newPhoneNum: newValue));
@@ -113,6 +115,7 @@ class _InformationContentState extends State<InformationContent> {
               builder: (context, selectedValue) {
                 return TextInput(
                   currentValue: selectedValue,
+                  keyboardType: TextInputType.emailAddress,
                   onChanged: (newValue) {
                     BlocProvider.of<AccountInfoBloc>(context)
                         .add(UpdateEmail(newEmail: newValue));

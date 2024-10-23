@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_learning/lesson_30_firestore/core/enums/status_state.dart';
@@ -9,6 +10,7 @@ import 'package:flutter_learning/lesson_30_firestore/features/profile/presentati
 import 'package:flutter_learning/lesson_30_firestore/features/profile/presentation/settings_content.dart';
 import 'package:flutter_learning/lesson_30_firestore/features/profile/presentation/widgets/custom_title_and_content_section.dart';
 import 'package:flutter_learning/lesson_30_firestore/features/profile/presentation/widgets/information_content.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});
@@ -33,40 +35,56 @@ class ProfileScreen extends StatelessWidget {
                   ),
                   actions: [
                     IconButton(
-                        onPressed: () {},
+                        onPressed: () async {
+                          await GoogleSignIn()
+                              .signOut(); // Đảm bảo rằng đăng xuất Google trước tiên
+                          await FirebaseAuth.instance.signOut();
+                          if (context.mounted) {
+                            Navigator.of(context).pushReplacementNamed('/');
+                          }
+                        },
                         icon: const Icon(
                           Icons.logout,
                           color: Colors.white,
                         ))
                   ],
                 ),
-                body: GestureDetector(
-                  behavior: HitTestBehavior.opaque,
-                  onTap: () {
-                    FocusScope.of(context).unfocus();
+                body: BlocListener<AccountInfoBloc, AccountInfoState>(
+                  listener: (context, state) {
+                    final statusMsg = state.successMsg;
+                    if (statusMsg != null) {
+                      ScaffoldMessenger.of(context)
+                          .showSnackBar(SnackBar(content: Text(statusMsg)));
+                    }
                   },
-                  child: Container(
-                    width: double.infinity,
-                    height: double.infinity,
-                    padding:
-                        const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-                    color: const Color(0xff181F2B),
-                    child: const SingleChildScrollView(
-                      child: Column(
-                        children: [
-                          AvatarAndUsernameSection(),
-                          SizedBox(
-                            height: 38,
-                          ),
-                          CustomTitleAndContentSection(
-                              title: "Information",
-                              content: InformationContent()),
-                          SizedBox(
-                            height: 32,
-                          ),
-                          CustomTitleAndContentSection(
-                              title: "Settings", content: SettingsContent()),
-                        ],
+                  child: GestureDetector(
+                    behavior: HitTestBehavior.opaque,
+                    onTap: () {
+                      FocusScope.of(context).unfocus();
+                    },
+                    child: Container(
+                      width: double.infinity,
+                      height: double.infinity,
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 16, vertical: 8),
+                      color: const Color(0xff181F2B),
+                      child: const SingleChildScrollView(
+                        child: Column(
+                          children: [
+                            AvatarAndUsernameSection(),
+                            SizedBox(
+                              height: 38,
+                            ),
+                            CustomTitleAndContentSection(
+                                title: "Information",
+                                content: InformationContent()),
+                            SizedBox(
+                              height: 32,
+                            ),
+                            CustomTitleAndContentSection(
+                                title: "Settings", content: SettingsContent()),
+                          ],
+                        ),
                       ),
                     ),
                   ),

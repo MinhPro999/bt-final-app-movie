@@ -46,12 +46,14 @@ class TextInput extends StatefulWidget {
   final String? currentValue;
   final void Function(String)? onChanged;
   final String hintText;
+  final TextInputType? keyboardType;
 
   const TextInput({
     super.key,
     required this.currentValue,
     this.onChanged,
     required this.hintText,
+    this.keyboardType,
   });
 
   @override
@@ -67,6 +69,7 @@ class _TextInputState extends State<TextInput> {
       width: 250,
       child: TextField(
         controller: _controller,
+        keyboardType: widget.keyboardType,
         style: const TextStyle(
             color: Colors.white, fontSize: 14, fontWeight: FontWeight.w500),
         cursorColor: Colors.white,
