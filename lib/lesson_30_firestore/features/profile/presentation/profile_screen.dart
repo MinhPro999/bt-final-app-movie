@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_learning/l10n/generated/app_localizations.dart';
 import 'package:flutter_learning/lesson_30_firestore/core/enums/status_state.dart';
 import 'package:flutter_learning/lesson_30_firestore/features/auth/login/widgets/loading_overlay.dart';
 import 'package:flutter_learning/lesson_30_firestore/features/profile/data/remote_data_source/account_firestore_data_source.dart';
@@ -29,9 +30,9 @@ class ProfileScreen extends StatelessWidget {
               Scaffold(
                 appBar: AppBar(
                   backgroundColor: const Color(0xff1B2332),
-                  title: const Text(
-                    "Profile Screen",
-                    style: TextStyle(color: Colors.white),
+                  title: Text(
+                    AppLocalizations.of(context)!.helloVTI,
+                    style: const TextStyle(color: Colors.white),
                   ),
                   actions: [
                     IconButton(

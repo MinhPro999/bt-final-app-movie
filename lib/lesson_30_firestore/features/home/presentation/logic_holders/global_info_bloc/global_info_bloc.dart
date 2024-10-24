@@ -38,7 +38,11 @@ class GlobalInfoBloc extends Bloc<GlobalInfoEvent, GlobalInfoState> {
       }
     });
     on<SetSavedLangCode>((event, emit) async {
-      final result = await usecase.setSavedLangCode(event.langCode);
+      final isSuccess = await usecase.setSavedLangCode(event.langCode);
+      if (isSuccess) {
+        final currentLocale = await usecase.getLocale();
+        emit(state.copyWith(currentLocale: currentLocale));
+      }
     });
   }
 }
