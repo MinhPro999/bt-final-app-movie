@@ -1,9 +1,9 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_learning/lesson_30_firestore/core/common/presentation/blocs/global_info_bloc/global_info_bloc.dart';
 import 'package:flutter_learning/lesson_30_firestore/core/services/injection_container.dart';
 import 'package:flutter_learning/lesson_30_firestore/core/utils/convert_util.dart';
-import 'package:flutter_learning/lesson_30_firestore/features/home/presentation/logic_holders/global_info_bloc/global_info_bloc.dart';
 import 'package:flutter_learning/lesson_30_firestore/features/home/presentation/logic_holders/movie_info_bloc/movie_info_bloc.dart';
 import 'package:flutter_learning/lesson_30_firestore/features/home/presentation/widgets/header_section.dart';
 import 'package:flutter_learning/lesson_30_firestore/features/home/presentation/widgets/movie_item.dart';
