@@ -11,4 +11,13 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get helloVTI => 'Hola VTI, Paju Dora?';
+
+  @override
+  String get profile_app_bar_title => 'Mundo Sceree';
+
+  @override
+  String get information => 'Informaten';
+
+  @override
+  String get full_name => 'Fullnem';
 }

@@ -1,5 +1,8 @@
 {
     "@@locale": "es",
     "helloWorld": "¡Hola Mundo!",
-    "helloVTI": "Hola VTI, Paju Dora?"
+    "helloVTI": "Hola VTI, Paju Dora?",
+    "profile_app_bar_title": "Mundo Sceree",
+    "information": "Informaten",
+    "full_name": "Fullnem"
 }

@@ -31,7 +31,7 @@ class ProfileScreen extends StatelessWidget {
                 appBar: AppBar(
                   backgroundColor: const Color(0xff1B2332),
                   title: Text(
-                    AppLocalizations.of(context)!.helloVTI,
+                    AppLocalizations.of(context)!.profile_app_bar_title,
                     style: const TextStyle(color: Colors.white),
                   ),
                   actions: [
@@ -69,20 +69,21 @@ class ProfileScreen extends StatelessWidget {
                       padding: const EdgeInsets.symmetric(
                           horizontal: 16, vertical: 8),
                       color: const Color(0xff181F2B),
-                      child: const SingleChildScrollView(
+                      child: SingleChildScrollView(
                         child: Column(
                           children: [
-                            AvatarAndUsernameSection(),
-                            SizedBox(
+                            const AvatarAndUsernameSection(),
+                            const SizedBox(
                               height: 38,
                             ),
                             CustomTitleAndContentSection(
-                                title: "Information",
-                                content: InformationContent()),
-                            SizedBox(
+                                title:
+                                    AppLocalizations.of(context)!.information,
+                                content: const InformationContent()),
+                            const SizedBox(
                               height: 32,
                             ),
-                            CustomTitleAndContentSection(
+                            const CustomTitleAndContentSection(
                                 title: "Settings", content: SettingsContent()),
                           ],
                         ),

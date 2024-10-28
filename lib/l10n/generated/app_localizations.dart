@@ -108,6 +108,24 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Hello VTI, how is it going?'**
   String get helloVTI;
+
+  /// No description provided for @profile_app_bar_title.
+  ///
+  /// In en, this message translates to:
+  /// **'Profile Screen'**
+  String get profile_app_bar_title;
+
+  /// No description provided for @information.
+  ///
+  /// In en, this message translates to:
+  /// **'Information'**
+  String get information;
+
+  /// No description provided for @full_name.
+  ///
+  /// In en, this message translates to:
+  /// **'Fullname'**
+  String get full_name;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

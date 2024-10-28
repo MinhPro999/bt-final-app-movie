@@ -11,4 +11,13 @@ class AppLocalizationsVi extends AppLocalizations {
 
   @override
   String get helloVTI => 'Xin chào VTI, bạn khoẻ không';
+
+  @override
+  String get profile_app_bar_title => 'Thông tin tài khoản';
+
+  @override
+  String get information => 'Thông tin cơ bản';
+
+  @override
+  String get full_name => 'Họ và tên';
 }

@@ -1,5 +1,8 @@
 {
     "@@locale": "en",
     "helloWorld": "Hello World!",
-    "helloVTI": "Hello VTI, how is it going?"
+    "helloVTI": "Hello VTI, how is it going?",
+    "profile_app_bar_title": "Profile Screen",
+    "information": "Information",
+    "full_name": "Fullname"
 }

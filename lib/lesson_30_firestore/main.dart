@@ -30,16 +30,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider<GlobalInfoBloc>(
-      create: (_) => GlobalInfoBloc(getIt()
-          // GlobalInfoUsecases(
-          //     repository: MovieRepositoryImpl(
-          //         remoteDataSource:
-          //             MovieRemoteDataSourceImpl(dio: DioClient().dio)),
-          //     globalRepository: GlobalRepositoryImpl(
-          //         localDatasource: GlobalInfoLocalDataSourceImpl(
-          //             sharedPreferences: sharedPreferences))),
-          )
-        ..add(GetGlobalInfo()),
+      create: (_) => GlobalInfoBloc(getIt())..add(GetGlobalInfo()),
       child: BlocBuilder<GlobalInfoBloc, GlobalInfoState>(
         builder: (context, state) {
           return MaterialApp(

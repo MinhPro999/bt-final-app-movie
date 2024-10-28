@@ -1,5 +1,8 @@
 {
     "@@locale": "vi",
     "helloWorld": "Xin chào Thế Giới",
-    "helloVTI": "Xin chào VTI, bạn khoẻ không"
+    "helloVTI": "Xin chào VTI, bạn khoẻ không",
+    "profile_app_bar_title": "Thông tin tài khoản",
+    "information": "Thông tin cơ bản",
+    "full_name": "Họ và tên"
 }

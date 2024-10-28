@@ -54,7 +54,6 @@ class SettingsContent extends StatefulWidget {
 }
 
 class _SettingsContentState extends State<SettingsContent> {
-  // String selectedLanguage = "Vietnamese";
   final supportedLocales = AppLocalizations.supportedLocales;
   @override
   Widget build(BuildContext context) {
@@ -85,33 +84,7 @@ class _SettingsContentState extends State<SettingsContent> {
                                 },
                               ),
                             ))
-                        .toList()
-                    // [
-                    //   FlagOption(
-                    //     flagValue: "Vietnamese",
-                    //     selectedFlag: selectedLanguage,
-                    //     svgPicturePath: "assets/svg/vietnam-flag.svg",
-                    //     onTap: () {
-                    //       setState(() {
-                    //         selectedLanguage = "Vietnamese";
-                    //       });
-                    //     },
-                    //   ),
-                    //   const SizedBox(
-                    //     width: 8,
-                    //   ),
-                    //   FlagOption(
-                    //     flagValue: "English",
-                    //     selectedFlag: selectedLanguage,
-                    //     svgPicturePath: "assets/svg/us-flag.svg",
-                    //     onTap: () {
-                    //       setState(() {
-                    //         selectedLanguage = "English";
-                    //       });
-                    //     },
-                    //   ),
-                    // ],
-                    );
+                        .toList());
               },
             ))
       ],
