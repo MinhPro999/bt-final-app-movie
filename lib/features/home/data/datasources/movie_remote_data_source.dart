@@ -1,8 +1,8 @@
 import 'package:dio/dio.dart';
-import 'package:flutter_learning/lesson_30_firestore/core/services/logger_service.dart';
-import 'package:flutter_learning/lesson_30_firestore/features/home/data/models/genre_model.dart';
-import 'package:flutter_learning/lesson_30_firestore/features/home/data/models/image_config_info_model.dart';
-import 'package:flutter_learning/lesson_30_firestore/features/home/data/models/movie_model.dart';
+import 'package:flutter_learning/core/services/logger_service.dart';
+import 'package:flutter_learning/features/home/data/models/genre_model.dart';
+import 'package:flutter_learning/features/home/data/models/image_config_info_model.dart';
+import 'package:flutter_learning/features/home/data/models/movie_model.dart';
 
 //! Bước 3.1: Tạo Data Sources, sử dụng Model trong DataSource
 abstract class MovieRemoteDataSource {

@@ -1,12 +1,12 @@
-import 'package:flutter_learning/lesson_30_firestore/core/apis/dio_client.dart';
-import 'package:flutter_learning/lesson_30_firestore/core/common/data/datasources/global_info_local_data_source.dart';
-import 'package:flutter_learning/lesson_30_firestore/core/common/data/repositories/global_repository_impl.dart';
-import 'package:flutter_learning/lesson_30_firestore/core/common/domain/repositories/global_repository.dart';
-import 'package:flutter_learning/lesson_30_firestore/core/common/domain/usecases/global_info_usecases.dart';
-import 'package:flutter_learning/lesson_30_firestore/features/home/data/datasources/movie_remote_data_source.dart';
-import 'package:flutter_learning/lesson_30_firestore/features/home/data/repositories/movie_repository_impl.dart';
-import 'package:flutter_learning/lesson_30_firestore/features/home/domain/repositories/movie_repository.dart';
-import 'package:flutter_learning/lesson_30_firestore/features/home/domain/usecases/movie_usecase.dart';
+import 'package:flutter_learning/core/apis/dio_client.dart';
+import 'package:flutter_learning/core/common/data/datasources/global_info_local_data_source.dart';
+import 'package:flutter_learning/core/common/data/repositories/global_repository_impl.dart';
+import 'package:flutter_learning/core/common/domain/repositories/global_repository.dart';
+import 'package:flutter_learning/core/common/domain/usecases/global_info_usecases.dart';
+import 'package:flutter_learning/features/home/data/datasources/movie_remote_data_source.dart';
+import 'package:flutter_learning/features/home/data/repositories/movie_repository_impl.dart';
+import 'package:flutter_learning/features/home/domain/repositories/movie_repository.dart';
+import 'package:flutter_learning/features/home/domain/usecases/movie_usecase.dart';
 import 'package:get_it/get_it.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 

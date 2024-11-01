@@ -1,4 +1,4 @@
-import 'package:flutter_learning/lesson_30_firestore/features/home/domain/entities/image_configuration.dart';
+import 'package:flutter_learning/features/home/domain/entities/image_configuration.dart';
 
 class ImageConfigInfoModel extends ImageConfigInfo {
   @override

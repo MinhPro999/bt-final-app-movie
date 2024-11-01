@@ -1,4 +1,4 @@
-import 'package:flutter_learning/lesson_30_firestore/features/home/domain/entities/image_configuration.dart';
+import 'package:flutter_learning/features/home/domain/entities/image_configuration.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'image_config_info_model_ver_2.g.dart';

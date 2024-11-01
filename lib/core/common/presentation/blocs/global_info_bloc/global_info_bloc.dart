@@ -2,11 +2,11 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_learning/lesson_30_firestore/core/common/domain/usecases/global_info_usecases.dart';
-import 'package:flutter_learning/lesson_30_firestore/core/enums/status_state.dart';
-import 'package:flutter_learning/lesson_30_firestore/core/services/logger_service.dart';
-import 'package:flutter_learning/lesson_30_firestore/features/home/domain/entities/genre.dart';
-import 'package:flutter_learning/lesson_30_firestore/features/home/domain/entities/image_configuration.dart';
+import 'package:flutter_learning/core/common/domain/usecases/global_info_usecases.dart';
+import 'package:flutter_learning/core/enums/status_state.dart';
+import 'package:flutter_learning/core/services/logger_service.dart';
+import 'package:flutter_learning/features/home/domain/entities/genre.dart';
+import 'package:flutter_learning/features/home/domain/entities/image_configuration.dart';
 
 part 'global_info_event.dart';
 part 'global_info_state.dart';

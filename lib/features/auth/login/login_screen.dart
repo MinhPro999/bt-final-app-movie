@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_learning/lesson_30_firestore/features/auth/login/bloc/logic_bloc.dart';
-import 'package:flutter_learning/lesson_30_firestore/features/auth/login/widgets/app_icon_section.dart';
-import 'package:flutter_learning/lesson_30_firestore/features/auth/login/widgets/forgot_password_section.dart';
-import 'package:flutter_learning/lesson_30_firestore/features/auth/login/widgets/loading_overlay.dart';
-import 'package:flutter_learning/lesson_30_firestore/features/auth/login/widgets/login_button_section.dart';
-import 'package:flutter_learning/lesson_30_firestore/features/auth/login/widgets/other_sign_in_method_section.dart';
-import 'package:flutter_learning/lesson_30_firestore/features/auth/login/widgets/username_password_section.dart';
+import 'package:flutter_learning/features/auth/login/bloc/logic_bloc.dart';
+import 'package:flutter_learning/features/auth/login/widgets/app_icon_section.dart';
+import 'package:flutter_learning/features/auth/login/widgets/forgot_password_section.dart';
+import 'package:flutter_learning/features/auth/login/widgets/loading_overlay.dart';
+import 'package:flutter_learning/features/auth/login/widgets/login_button_section.dart';
+import 'package:flutter_learning/features/auth/login/widgets/other_sign_in_method_section.dart';
+import 'package:flutter_learning/features/auth/login/widgets/username_password_section.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});

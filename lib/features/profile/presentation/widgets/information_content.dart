@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_learning/l10n/generated/app_localizations.dart';
-import 'package:flutter_learning/lesson_30_firestore/features/profile/presentation/custom_title_and_content_in_item.dart';
-import 'package:flutter_learning/lesson_30_firestore/features/profile/presentation/information_section_widgets/date_picker_display.dart';
-import 'package:flutter_learning/lesson_30_firestore/features/profile/presentation/information_section_widgets/fullname_input.dart';
-import 'package:flutter_learning/lesson_30_firestore/features/profile/presentation/information_section_widgets/radio_gender_item.dart';
-import 'package:flutter_learning/lesson_30_firestore/features/profile/presentation/logic_holders/bloc/account_info_bloc.dart';
+import 'package:flutter_learning/features/profile/presentation/custom_title_and_content_in_item.dart';
+import 'package:flutter_learning/features/profile/presentation/information_section_widgets/date_picker_display.dart';
+import 'package:flutter_learning/features/profile/presentation/information_section_widgets/fullname_input.dart';
+import 'package:flutter_learning/features/profile/presentation/information_section_widgets/radio_gender_item.dart';
+import 'package:flutter_learning/features/profile/presentation/logic_holders/bloc/account_info_bloc.dart';
 
 class InformationContent extends StatefulWidget {
   const InformationContent({

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_learning/lesson_30_firestore/features/profile/presentation/widgets/information_content.dart';
+import 'package:flutter_learning/features/profile/presentation/widgets/information_content.dart';
 
 class RadioGenderItem extends StatelessWidget {
   final int radioValue;

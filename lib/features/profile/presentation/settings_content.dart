@@ -3,9 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_learning/gen/assets.gen.dart';
 import 'package:flutter_learning/l10n/generated/app_localizations.dart';
-import 'package:flutter_learning/lesson_30_firestore/core/common/presentation/blocs/global_info_bloc/global_info_bloc.dart';
-import 'package:flutter_learning/lesson_30_firestore/core/services/logger_service.dart';
-import 'package:flutter_learning/lesson_30_firestore/features/profile/presentation/custom_title_and_content_in_item.dart';
+import 'package:flutter_learning/core/common/presentation/blocs/global_info_bloc/global_info_bloc.dart';
+import 'package:flutter_learning/core/services/logger_service.dart';
+import 'package:flutter_learning/features/profile/presentation/custom_title_and_content_in_item.dart';
 import 'package:flutter_svg/svg.dart';
 
 class FlagOption extends StatelessWidget {

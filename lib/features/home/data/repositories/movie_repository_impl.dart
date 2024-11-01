@@ -1,8 +1,8 @@
-import 'package:flutter_learning/lesson_30_firestore/features/home/data/datasources/movie_remote_data_source.dart';
-import 'package:flutter_learning/lesson_30_firestore/features/home/domain/entities/genre.dart';
-import 'package:flutter_learning/lesson_30_firestore/features/home/domain/entities/image_configuration.dart';
-import 'package:flutter_learning/lesson_30_firestore/features/home/domain/entities/movie.dart';
-import 'package:flutter_learning/lesson_30_firestore/features/home/domain/repositories/movie_repository.dart';
+import 'package:flutter_learning/features/home/data/datasources/movie_remote_data_source.dart';
+import 'package:flutter_learning/features/home/domain/entities/genre.dart';
+import 'package:flutter_learning/features/home/domain/entities/image_configuration.dart';
+import 'package:flutter_learning/features/home/domain/entities/movie.dart';
+import 'package:flutter_learning/features/home/domain/repositories/movie_repository.dart';
 
 class MovieRepositoryImpl implements MovieRepository {
   final MovieRemoteDataSource remoteDataSource;

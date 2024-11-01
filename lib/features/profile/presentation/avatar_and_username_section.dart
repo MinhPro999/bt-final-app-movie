@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_learning/lesson_30_firestore/features/profile/presentation/logic_holders/bloc/account_info_bloc.dart';
+import 'package:flutter_learning/features/profile/presentation/logic_holders/bloc/account_info_bloc.dart';
 
 class AvatarAndUsernameSection extends StatelessWidget {
   const AvatarAndUsernameSection({

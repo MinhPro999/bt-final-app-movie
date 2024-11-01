@@ -1,7 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_learning/lesson_30_firestore/features/auth/login/login_screen.dart';
-import 'package:flutter_learning/lesson_30_firestore/features/home/presentation/home_screen.dart';
+import 'package:flutter_learning/features/auth/login/login_screen.dart';
+import 'package:flutter_learning/features/home/presentation/home_screen.dart';
 
 //! Tạo một widget gốc để xử lý điều hướng
 class RootPage extends StatelessWidget {

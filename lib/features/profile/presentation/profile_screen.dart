@@ -2,15 +2,15 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_learning/l10n/generated/app_localizations.dart';
-import 'package:flutter_learning/lesson_30_firestore/core/enums/status_state.dart';
-import 'package:flutter_learning/lesson_30_firestore/features/auth/login/widgets/loading_overlay.dart';
-import 'package:flutter_learning/lesson_30_firestore/features/profile/data/remote_data_source/account_firestore_data_source.dart';
-import 'package:flutter_learning/lesson_30_firestore/features/profile/data/repositories/account_repository.dart';
-import 'package:flutter_learning/lesson_30_firestore/features/profile/presentation/avatar_and_username_section.dart';
-import 'package:flutter_learning/lesson_30_firestore/features/profile/presentation/logic_holders/bloc/account_info_bloc.dart';
-import 'package:flutter_learning/lesson_30_firestore/features/profile/presentation/settings_content.dart';
-import 'package:flutter_learning/lesson_30_firestore/features/profile/presentation/widgets/custom_title_and_content_section.dart';
-import 'package:flutter_learning/lesson_30_firestore/features/profile/presentation/widgets/information_content.dart';
+import 'package:flutter_learning/core/enums/status_state.dart';
+import 'package:flutter_learning/features/auth/login/widgets/loading_overlay.dart';
+import 'package:flutter_learning/features/profile/data/remote_data_source/account_firestore_data_source.dart';
+import 'package:flutter_learning/features/profile/data/repositories/account_repository.dart';
+import 'package:flutter_learning/features/profile/presentation/avatar_and_username_section.dart';
+import 'package:flutter_learning/features/profile/presentation/logic_holders/bloc/account_info_bloc.dart';
+import 'package:flutter_learning/features/profile/presentation/settings_content.dart';
+import 'package:flutter_learning/features/profile/presentation/widgets/custom_title_and_content_section.dart';
+import 'package:flutter_learning/features/profile/presentation/widgets/information_content.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
 class ProfileScreen extends StatelessWidget {

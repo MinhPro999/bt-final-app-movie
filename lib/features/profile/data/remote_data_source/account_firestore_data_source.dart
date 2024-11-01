@@ -1,6 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flutter_learning/lesson_30_firestore/core/services/logger_service.dart';
-import 'package:flutter_learning/lesson_30_firestore/features/profile/data/models/account_model.dart';
+import 'package:flutter_learning/core/services/logger_service.dart';
+import 'package:flutter_learning/features/profile/data/models/account_model.dart';
 
 abstract class AccountFirestoreDataSource {
   Future<AccountModel?> getAccountData(String userId);

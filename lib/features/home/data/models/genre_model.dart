@@ -1,4 +1,4 @@
-import 'package:flutter_learning/lesson_30_firestore/features/home/domain/entities/genre.dart';
+import 'package:flutter_learning/features/home/domain/entities/genre.dart';
 
 class GenreModel extends Genre {
   @override

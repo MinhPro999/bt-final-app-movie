@@ -1,4 +1,4 @@
-import 'package:flutter_learning/lesson_30_firestore/features/home/domain/entities/movie.dart';
+import 'package:flutter_learning/features/home/domain/entities/movie.dart';
 
 class MovieModel extends Movie {
   MovieModel({

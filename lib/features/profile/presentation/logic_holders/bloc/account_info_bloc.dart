@@ -4,10 +4,10 @@ import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
-import 'package:flutter_learning/lesson_30_firestore/core/enums/status_state.dart';
-import 'package:flutter_learning/lesson_30_firestore/core/services/logger_service.dart';
-import 'package:flutter_learning/lesson_30_firestore/features/profile/domain/entities/account_entity.dart';
-import 'package:flutter_learning/lesson_30_firestore/features/profile/domain/repositories/account_repository.dart';
+import 'package:flutter_learning/core/enums/status_state.dart';
+import 'package:flutter_learning/core/services/logger_service.dart';
+import 'package:flutter_learning/features/profile/domain/entities/account_entity.dart';
+import 'package:flutter_learning/features/profile/domain/repositories/account_repository.dart';
 import 'package:image_picker/image_picker.dart';
 
 part 'account_info_event.dart';

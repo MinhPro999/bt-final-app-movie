@@ -1,7 +1,7 @@
 import 'package:dio/dio.dart';
-import 'package:flutter_learning/lesson_30_firestore/core/apis/dio_interceptors/logging_interceptor.dart';
-import 'package:flutter_learning/lesson_30_firestore/core/apis/dio_interceptors/token_interceptor.dart';
-import 'package:flutter_learning/lesson_30_firestore/core/utils/dot_env_util.dart';
+import 'package:flutter_learning/core/apis/dio_interceptors/logging_interceptor.dart';
+import 'package:flutter_learning/core/apis/dio_interceptors/token_interceptor.dart';
+import 'package:flutter_learning/core/utils/dot_env_util.dart';
 
 class DioClient {
   late Dio dio;

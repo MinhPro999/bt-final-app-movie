@@ -1,6 +1,6 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
-import 'package:flutter_learning/lesson_30_firestore/features/home/presentation/widgets/option_item.dart';
+import 'package:flutter_learning/features/home/presentation/widgets/option_item.dart';
 
 class HeaderSection extends StatelessWidget {
   final void Function()? onPressed;

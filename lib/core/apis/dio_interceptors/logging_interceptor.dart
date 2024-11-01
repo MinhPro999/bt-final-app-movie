@@ -1,5 +1,5 @@
 import 'package:dio/dio.dart';
-import 'package:flutter_learning/lesson_30_firestore/core/services/logger_service.dart';
+import 'package:flutter_learning/core/services/logger_service.dart';
 
 class LoggingInterceptor extends Interceptor {
   @override

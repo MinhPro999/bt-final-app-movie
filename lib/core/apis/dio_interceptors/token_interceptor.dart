@@ -1,5 +1,5 @@
 import 'package:dio/dio.dart';
-import 'package:flutter_learning/lesson_30_firestore/core/utils/dot_env_util.dart';
+import 'package:flutter_learning/core/utils/dot_env_util.dart';
 
 class TokenInterceptor extends Interceptor {
   @override

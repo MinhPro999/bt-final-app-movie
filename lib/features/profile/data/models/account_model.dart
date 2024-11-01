@@ -1,5 +1,5 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
-import 'package:flutter_learning/lesson_30_firestore/features/profile/domain/entities/account_entity.dart';
+import 'package:flutter_learning/features/profile/domain/entities/account_entity.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'account_model.g.dart';
