@@ -5,6 +5,8 @@
 // Khi các thuộc tính thay đổi,
 // widget sẽ được xây dựng lại nhưng widget không tự thay đổi trạng thái của chính nó.
 
+// ignore_for_file: must_be_immutable
+
 import 'package:flutter/material.dart';
 
 void main() {

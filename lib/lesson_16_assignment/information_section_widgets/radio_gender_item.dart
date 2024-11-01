@@ -31,7 +31,7 @@ class RadioGenderItem extends StatelessWidget {
                 value: radioValue,
                 groupValue: selectedValue,
                 onChanged: null,
-                fillColor: MaterialStateProperty.all(Colors.white)),
+                fillColor: WidgetStateProperty.all(Colors.white)),
             const SizedBox(
               width: 2,
             ),
